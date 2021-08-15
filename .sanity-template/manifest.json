@@ -1,0 +1,36 @@
+{
+  "version": 2,
+  "title": "Next.js TS, Vercel, Tailwind, Extras starter",
+  "description": "Sets up NextJS with Typescript, deployed to vercel, with tailwind, eslint, prettier, and extras",
+  "previewMedia": {
+    "type": "image",
+    "src": ".sanity-template/assets/stack.svg",
+    "alt": "The stack"
+  },
+  "technologies": [
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "url": "https://vercel.com/"
+    },
+    {
+      "id": "nextjs",
+      "name": "Next.js",
+      "url": "https://nextjs.org"
+    }
+  ],
+  "deployment": {
+    "provider": "vercel",
+    "studio": { "basePath": "/studio" },
+    "envVars": {
+      "projectId": ["NEXT_PUBLIC_SANITY_PROJECT_ID"],
+      "dataset": ["NEXT_PUBLIC_SANITY_DATASET"]
+    },
+    "corsOrigins": [
+      {
+        "origin": "http://localhost:3000",
+        "allowCredentials": true
+      }
+    ]
+  }
+}
