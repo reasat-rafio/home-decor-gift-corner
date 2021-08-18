@@ -16,7 +16,7 @@ const siteQuery = `
 `
 
 const productCardQuery = (queryName: string, dealName: string) => `
-"${queryName}": *[_type == "product" && (deals[0]->.title == "${dealName}" || deals[1]->.title == "${dealName}" || deals[2]->.title == "${dealName}")][0...4] | order(order asc) {
+"${queryName}": *[_type == "product" && (deals[0]->.title == "${dealName}" || deals[1]->.title == "${dealName}" || deals[2]->.title == "${dealName}")]|order(_createdAt desc)[0...4] {
   "mainImage": ${withDimensions('mainImage')},
       slug,
       title,
@@ -27,7 +27,6 @@ const productCardQuery = (queryName: string, dealName: string) => `
       },
 },
 `
-
 export const homeQuery = groq`{
     ${siteQuery}
     "landingPage": *[_id == "landingPage"][0] {
@@ -54,7 +53,7 @@ export const homeQuery = groq`{
     "deals": *[_type == "deal"][]{
       title
     },
-    "latestProduct": *[_type == "product"]|order(userId desc)[0...6]{
+    "latestProduct": *[_type == "product"]|order(_createdAt desc)[0...6]{
       "mainImage": ${withDimensions('mainImage')},
       slug,
       title,
@@ -62,6 +61,14 @@ export const homeQuery = groq`{
       offer_price,
       availbility
     },
+    "allProducts":  *[_type == "product"]{
+      "mainImage": ${withDimensions('mainImage')},
+      slug,
+      title,
+      price,
+      offer_price,
+      availbility
+    }
 }`
 
 export const shopQuery = groq`{

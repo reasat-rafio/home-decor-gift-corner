@@ -8,7 +8,7 @@ interface CheckoutCardProps {}
 
 export const CheckoutCard: React.FC<CheckoutCardProps> = ({}) => {
     const dispatch = useAppDispatch()
-    const { showCartSideMenu } = useAppSelector(selectDom)
+
     const { inCartProducts } = useAppSelector(selectProduct)
 
     // items subtotal

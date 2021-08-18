@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,59 +9,59 @@
 } */
 
 .section_padding {
-  @apply lg:px-0 px-8;
+    @apply lg:px-0 px-8;
 }
 
 .flex-center {
-  @apply flex justify-center items-center;
+    @apply flex justify-center items-center;
 }
 
 .title {
-  @apply lg:text-[80px] text-[35px] font-semibold text-[#353535] md:text-[50px];
+    @apply lg:text-[80px] text-[35px] font-semibold text-[#353535] md:text-[50px];
 }
 
 .section {
-  @apply px-4 pt-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-2xl md:px-24 lg:px-8;
+    @apply px-4 pt-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-2xl md:px-24 lg:px-8;
 }
 
 .section-title {
-  @apply font-semibold lg:text-[36px] text-2xl  uppercase;
+    @apply font-semibold lg:text-[36px] text-2xl  uppercase;
 }
 
 .review > .swiper-button-next,
 .review > .swiper-button-prev,
 .review > .swiper-button-disabled {
-  display: none;
+    display: none;
 }
 
 /* nav */
 .nav-icon-styles {
-  @apply bg-yellow rounded-full p-2 cursor-pointer;
+    @apply bg-yellow rounded-full p-2 cursor-pointer;
 }
 
 .nav-icon {
-  padding: 5px !important;
+    padding: 5px !important;
 }
 
 /* card */
 
 .cardNavBtn {
-  @apply bg-white rounded-full p-3 shadow-sm cursor-pointer hover:scale-110 transition-transform duration-150;
+    @apply bg-white rounded-full p-3 shadow-sm cursor-pointer hover:scale-110 transition-transform duration-150;
 }
 
 .cardBtn {
-  @apply lg:col-span-6  col-span-12 text-xs  rounded-full  lg:px-5 py-2  px-3 cursor-pointer  hover:bg-yellow hover:text-white transition-colors duration-200 border;
+    @apply lg:col-span-6  col-span-12 text-xs  rounded-full  lg:px-5 py-2  px-3 cursor-pointer  hover:bg-yellow hover:text-white transition-colors duration-200 border;
 }
 
 /* photoswipe */
 
 .pswp img {
-  max-width: none;
-  object-fit: contain;
+    max-width: none;
+    object-fit: contain;
 }
 
 .btn {
-  /* position: relative;
+    /* position: relative;
   display: block;
   border: 2px solid #ffba01;
   padding: 14px 60px;
@@ -72,21 +72,21 @@
 }
 
 .btn::before {
-  background: #ffba01;
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transition: all 0.6s ease;
-  opacity: 0.8;
+    background: #ffba01;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: all 0.6s ease;
+    opacity: 0.8;
 }
 
 .btn3::before {
-  width: 100%;
-  height: 0;
-  transform: translate(-50%, -50%) rotate(45deg);
+    width: 100%;
+    height: 0;
+    transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .btn3:hover::before {
-  height: 300%;
+    height: 300%;
 }
