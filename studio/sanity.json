@@ -1,37 +1,35 @@
 {
-  "root": true,
-  "project": {
-    "name": "Next.js TS, Sanity, Vercel, Extras Starter",
-    "basePath": "/studio"
-  },
-  "api": {
-    "projectId": "PULLED_FROM_ENV",
-    "dataset": "PULLED_FROM_ENV"
-  },
-  "plugins": [
-    "@sanity/base",
-    "@sanity/components",
-    "@sanity/default-layout",
-    "@sanity/default-login",
-    "@sanity/desk-tool"
-  ],
-  "env": {
-    "development": {
-      "plugins": ["@sanity/vision"]
-    }
-  },
-  "parts": [
-    {
-      "name": "part:@sanity/base/schema",
-      "path": "./schemas/schema"
+    "root": true,
+    "api": {
+        "projectId": "4vvsrp38",
+        "dataset": "production"
     },
-    {
-      "name": "part:@sanity/desk-tool/structure",
-      "path": "./deskStructure.js"
+    "project": {
+        "name": "Home Decor And Gift Corner",
+        "basePath": "/studio"
     },
-    {
-      "implements": "part:@sanity/base/theme/variables/override-style",
-      "path": "./styles/variables.css"
-    }
-  ]
+    "plugins": [
+        "@sanity/base",
+        "@sanity/components",
+        "@sanity/default-layout",
+        "@sanity/default-login",
+        "@sanity/desk-tool",
+        "@sanity/color-input",
+        "order-documents"
+    ],
+    "env": {
+        "development": {
+            "plugins": ["@sanity/vision"]
+        }
+    },
+    "parts": [
+        {
+            "name": "part:@sanity/base/schema",
+            "path": "./schemas/schema"
+        },
+        {
+            "implements": "part:@sanity/desk-tool/structure",
+            "path": "./deskStructure"
+        }
+    ]
 }

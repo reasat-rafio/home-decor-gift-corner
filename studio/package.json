@@ -1,30 +1,37 @@
 {
-  "name": "sanitytemplatecontent",
-  "private": true,
-  "version": "1.0.1",
-  "description": "",
-  "main": "package.json",
-  "author": "Knut Melvær <knut@sanity.io>",
-  "license": "UNLICENSED",
-  "scripts": {
-    "start": "SANITY_ACTIVE_ENV=development sanity start",
-    "test": "sanity check",
-    "build": "sanity build"
-  },
-  "keywords": [
-    "sanity"
-  ],
-  "dependencies": {
-    "@sanity/base": "^2.10.2",
-    "@sanity/components": "^2.2.6",
-    "@sanity/core": "^2.10.2",
-    "@sanity/default-layout": "^2.10.2",
-    "@sanity/default-login": "^2.8.0",
-    "@sanity/desk-tool": "^2.10.2",
-    "@sanity/vision": "^2.10.0",
-    "prop-types": "^15.7",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-icons": "^4.1.0"
-  }
+    "name": "sanity-nextjs-ecommerce-studio",
+    "private": true,
+    "version": "1.0.1",
+    "description": "",
+    "main": "package.json",
+    "author": "Knut Melvær <knut@sanity.io>",
+    "license": "MIT",
+    "scripts": {
+        "start": "SANITY_ACTIVE_ENV=development sanity start",
+        "test": "sanity check",
+        "build": "sanity build"
+    },
+    "keywords": [
+        "sanity"
+    ],
+    "dependencies": {
+        "@sanity/base": "^2.13.0",
+        "@sanity/block-content-to-react": "^3.0.0",
+        "@sanity/cli": "^2.13.0",
+        "@sanity/color-input": "^2.13.0",
+        "@sanity/components": "^2.13.0",
+        "@sanity/core": "^2.13.0",
+        "@sanity/default-layout": "^2.13.0",
+        "@sanity/default-login": "^2.13.0",
+        "@sanity/desk-tool": "^2.13.0",
+        "@sanity/vision": "^2.13.0",
+        "prop-types": "^15.7",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1",
+        "react-icons": "^4.1.0",
+        "react-moveable": "^0.22.6",
+        "resize-observer": "^1.0.0",
+        "sanity-plugin-order-documents": "0.0.19"
+    },
+    "devDependencies": {}
 }
