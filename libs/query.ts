@@ -1,23 +1,23 @@
-import { groq } from "next-sanity";
-import { withDimensions } from "sanity-react-extra";
+import { groq } from 'next-sanity'
+import { withDimensions } from 'sanity-react-extra'
 
 const siteQuery = `
   "site": *[_id == "siteConfig"][0] {
     ...,
-    "logo": ${withDimensions("logo")},
+    "logo": ${withDimensions('logo')},
     footer {
       ...,
       socials[] {
       ...,
-      "logo": ${withDimensions("logo")},
+      "logo": ${withDimensions('logo')},
       },
     },
   },
-`;
+`
 
 const productCardQuery = (queryName: string, dealName: string) => `
 "${queryName}": *[_type == "product" && (deals[0]->.title == "${dealName}" || deals[1]->.title == "${dealName}" || deals[2]->.title == "${dealName}")][0...4] | order(order asc) {
-  "mainImage": ${withDimensions("mainImage")},
+  "mainImage": ${withDimensions('mainImage')},
       slug,
       title,
       price,
@@ -26,43 +26,43 @@ const productCardQuery = (queryName: string, dealName: string) => `
         title
       },
 },
-`;
+`
 
 export const homeQuery = groq`{
     ${siteQuery}
     "landingPage": *[_id == "landingPage"][0] {
         ...,
-        "poster": ${withDimensions("poster")},
+        "poster": ${withDimensions('poster')},
          screens[] {
             ...,
-            "backgroundImage": ${withDimensions("backgroundImage")},
-            "icon": ${withDimensions("icon")},
+            "backgroundImage": ${withDimensions('backgroundImage')},
+            "icon": ${withDimensions('icon')},
             title[]{
               ...,
-              "icon": ${withDimensions("icon")},
+              "icon": ${withDimensions('icon')},
             },
             reviews[]{
               ...,
-              "image": ${withDimensions("image")},
+              "image": ${withDimensions('image')},
             },
         },
     },
 
-    ${productCardQuery("offer", "Offer")}
-    ${productCardQuery("bestSeller", "Best Seller")}
-    ${productCardQuery("special", "Special")}
+    ${productCardQuery('offer', 'Offer')}
+    ${productCardQuery('bestSeller', 'Best Seller')}
+    ${productCardQuery('special', 'Special')}
     "deals": *[_type == "deal"][]{
       title
     },
     "latestProduct": *[_type == "product"]|order(userId desc)[0...6]{
-      "mainImage": ${withDimensions("mainImage")},
+      "mainImage": ${withDimensions('mainImage')},
       slug,
       title,
       price,
       offer_price,
       availbility
     },
-}`;
+}`
 
 export const shopQuery = groq`{
   ${siteQuery}
@@ -73,21 +73,25 @@ export const shopQuery = groq`{
   "products": *[_type == "product"][]{
     availbility,
     categories,
-    "mainImage": ${withDimensions("mainImage")},
+    "mainImage": ${withDimensions('mainImage')},
     price,
     slug,
     title
   },
 
-}`;
+}`
 
 export const contactQuery = groq`{
   ${siteQuery}
-}`;
+}`
+
+export const checkoutQuery = groq`{
+  ${siteQuery}
+}`
 
 export const aboutQuery = groq`{
   ${siteQuery}
-}`;
+}`
 
 export const productQuery = groq`{
   ${siteQuery}
@@ -97,8 +101,8 @@ export const productQuery = groq`{
     body,
     categories,
     deals[0]->,
-    "mainImage": ${withDimensions("mainImage")},
-    "images": ${withDimensions("images[]")},
+    "mainImage": ${withDimensions('mainImage')},
+    "images": ${withDimensions('images[]')},
     price,
     price,
     tags[],
@@ -107,25 +111,25 @@ export const productQuery = groq`{
     slug,
     brand->{
       name,
-      "logo": ${withDimensions("logo")},
+      "logo": ${withDimensions('logo')},
     },
     "related_product": *[_type == "product" && references(^.tags[]._ref)][0...10]{
     availbility,
     categories,
-    "mainImage": ${withDimensions("mainImage")},
+    "mainImage": ${withDimensions('mainImage')},
     price,
     slug,
     title
     }
   }, 
-}`;
+}`
 
 export const categoryQuery = groq`{
   ${siteQuery}
   "products": *[_type == "product" && categories[0]->.slug.current == $category][]{
     availbility,
     categories,
-    "mainImage": ${withDimensions("mainImage")},
+    "mainImage": ${withDimensions('mainImage')},
     price,
     slug,
     title
@@ -134,4 +138,4 @@ export const categoryQuery = groq`{
     slug,
     title
   },
-}`;
+}`
