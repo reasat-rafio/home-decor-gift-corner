@@ -12,7 +12,7 @@ interface SearchResultProps {
 
 export const SearchResult: React.FC<SearchResultProps> = ({ searchResult, setSearchInput }) => {
     const sectionRef = useRef(null)
-    const asd = useOutsideAlerter(sectionRef, { setState: setSearchInput })
+    useOutsideAlerter(sectionRef, { setState: setSearchInput })
 
     return (
         <div
