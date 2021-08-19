@@ -11,8 +11,6 @@ import { imageUrlBuilder } from '../../../../utils/sanity'
 import { Cross, EmptyCart } from '../../../../libs/svgs'
 import TextTruncate from 'react-text-truncate'
 
-interface ShoppingCartSideBarProps {}
-
 export const CartSideMenu: React.FC<{}> = ({}) => {
     const dispatch = useAppDispatch()
     const { showCartSideMenu } = useAppSelector(selectDom)

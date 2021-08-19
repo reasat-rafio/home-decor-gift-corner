@@ -19,7 +19,7 @@ export default function checkout(props: SanityProps) {
 
     return (
         <Layout {...site}>
-            <div className="py-14 xl:py-20 px-0 2xl:max-w-screen-2xl xl:max-w-screen-xl mx-auto flex flex-col md:flex-row w-full !mt-[5%]">
+            <div className="py-14 xl:py-20  2xl:max-w-screen-2xl xl:max-w-screen-xl mx-auto flex flex-col md:flex-row w-full !mt-[5%] px-section">
                 <div className="md:w-full lg:w-3/5 flex  h-full flex-col -mt-1.5">
                     <CheckoutForm />
                 </div>

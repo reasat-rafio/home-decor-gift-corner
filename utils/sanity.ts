@@ -1,4 +1,5 @@
 import { setupNextSanity } from 'next-sanity-extra'
+import sanityClient from '@sanity/client'
 
 // Standard sanity config
 // Don't forget:
@@ -19,10 +20,12 @@ const config = {
     token: process.env.SANITY_API_TOKEN,
 }
 
-export const {
-    sanityClient,
-    imageUrlBuilder,
-    PortableText,
-    sanityStaticProps,
-    useSanityQuery,
-} = setupNextSanity(config)
+export const { imageUrlBuilder, PortableText, sanityStaticProps, useSanityQuery } =
+    setupNextSanity(config)
+
+export const previewClient = sanityClient({
+    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+    useCdn: process.env.NODE_ENV === 'production',
+    token: process.env.SANITY_API_TOKEN,
+})

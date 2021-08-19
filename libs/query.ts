@@ -18,6 +18,7 @@ const siteQuery = `
 const productCardQuery = (queryName: string, dealName: string) => `
 "${queryName}": *[_type == "product" && (deals[0]->.title == "${dealName}" || deals[1]->.title == "${dealName}" || deals[2]->.title == "${dealName}")]|order(_createdAt desc)[0...4] {
   "mainImage": ${withDimensions('mainImage')},
+      _id,   
       slug,
       title,
       price,
@@ -55,6 +56,7 @@ export const homeQuery = groq`{
     },
     "latestProduct": *[_type == "product"]|order(_createdAt desc)[0...6]{
       "mainImage": ${withDimensions('mainImage')},
+      _id,
       slug,
       title,
       price,
@@ -63,6 +65,7 @@ export const homeQuery = groq`{
     },
     "allProducts":  *[_type == "product"]{
       "mainImage": ${withDimensions('mainImage')},
+      _id,
       slug,
       title,
       price,
@@ -81,6 +84,7 @@ export const shopQuery = groq`{
     availbility,
     categories,
     "mainImage": ${withDimensions('mainImage')},
+    _id,
     price,
     slug,
     title
@@ -137,6 +141,7 @@ export const categoryQuery = groq`{
     availbility,
     categories,
     "mainImage": ${withDimensions('mainImage')},
+    _id,
     price,
     slug,
     title

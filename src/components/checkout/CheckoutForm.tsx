@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useAppDispatch, useAppSelector } from '../../store/hooks'
+import { CONFIRM_ORDER, selectProduct } from '../../store/product'
 import Button from '../common/Button'
 import { CheckBox } from '../common/Checkbox'
 import Input from '../common/Input'
 import TextArea from '../common/Textarea'
+import axios from 'axios'
 
 interface CheckoutFormProps {}
 
@@ -23,11 +26,63 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({}) => {
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm<CheckoutInputType>()
 
-    function onSubmit(input: CheckoutInputType) {
-        console.log(input)
+    const { inCartProducts } = useAppSelector(selectProduct)
+    const dispatch = useAppDispatch()
+    // items subtotal
+    const [subTotal, setSubTotal] = useState<number>(0)
+    //  doing the sum of the items price
+    useEffect(() => {
+        if (inCartProducts?.length) {
+            const _subtotal = inCartProducts.reduce(
+                (result: number, { price, quantity }) => result + price * quantity,
+                0,
+            )
+            setSubTotal(_subtotal)
+        } else {
+            setSubTotal(0)
+        }
+    }, [inCartProducts])
+
+    async function onSubmit({
+        firstName,
+        lastName,
+        address,
+        city,
+        email,
+        note,
+        phone,
+        zipCode,
+    }: CheckoutInputType) {
+        let response
+        try {
+            response = await fetch('/api/place-order', {
+                method: 'POST',
+                body: JSON.stringify({
+                    name: `${firstName} ${lastName}`,
+                    email: email,
+                    phone: phone,
+                    tracking: 'Recived',
+                    address: address,
+                    note: note,
+                    zipcode: zipCode,
+                    total: subTotal + 60,
+                    orderPlacedAt: `Order Placed At: ${new Date().toLocaleString()} `,
+                    orderedProducts: inCartProducts.map((item) => {
+                        const _product = { id: item._id, qty: item.quantity }
+                        return _product
+                    }),
+                }),
+            })
+            dispatch(CONFIRM_ORDER())
+            reset()
+            console.log(response)
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     return (
@@ -122,7 +177,12 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({}) => {
                         className="relative pt-3 xl:pt-6"
                     />
                     <div className="flex w-full">
-                        <Button className="w-full sm:w-auto">Place Order</Button>
+                        <Button
+                            disabled={inCartProducts.length > 0 ? false : true}
+                            className="w-full sm:w-auto"
+                        >
+                            Place Order
+                        </Button>
                     </div>
                 </div>
             </form>
