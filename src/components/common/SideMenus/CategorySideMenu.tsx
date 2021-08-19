@@ -13,7 +13,7 @@ export const CategorySideMenu: React.FC<{ category: category[] }> = ({ category 
     const router = useRouter()
     const { showShopCategorySideMenu } = useAppSelector(selectDom)
 
-    const [queryName, setQueryName] = useState<string | null>(null)
+    const [queryName, setQueryName] = useState<string | string[] | undefined>('')
 
     const closeSideMenubarAction = () => {
         dispatch(HIDE_SHOP_CATEGORY_SIDE_MENU())
@@ -25,7 +25,7 @@ export const CategorySideMenu: React.FC<{ category: category[] }> = ({ category 
     useEffect(() => {
         if (Object.keys(router.query).length !== 0) {
             const queryParams = router.query.category
-            setQueryName(queryParams as string)
+            setQueryName(queryParams)
         }
     }, [queryName, router.query.category])
 
