@@ -3,21 +3,22 @@ import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
 import { NextSeo } from 'next-seo'
 import { productQuery } from '../../../libs/query'
-import { sanityClient, sanityStaticProps, useSanityQuery } from '../../../utils/sanity'
+import { sanityStaticProps, useSanityQuery } from '../../../utils/sanity'
 import { Layout } from '../../components/common/Layout/Layout'
 import { Home } from '../../components/product/Home/Home'
 import { RelatedProducts } from '../../components/product/Home/RelatedProducts'
+import { sanity } from '../../../utils/sanity'
 
 const pathsQuery = groq`*[_type == 'product']{slug}`
 
 export const getStaticPaths = async () => {
-    const slugs = await sanityClient('anonymous').fetch(pathsQuery)
+    const slugs = await sanity.sanityClient('anonymous').fetch(pathsQuery)
 
     return {
         paths: slugs
             .filter((s: any) => s)
             .map((s: any) => ({ params: { product: s.slug.current } })),
-        fallback: false,
+        fallback: true,
     }
 }
 

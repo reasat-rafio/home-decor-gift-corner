@@ -45,17 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({ logo, menu }) => {
             >
                 <nav className="flex w-full">
                     <div className="flex items-center w-full flex-1 lg:space-x-14 md:space-x-8 space-x-4">
-                        <a
-                            href="/#home"
-                            onClick={(ev) => {
-                                if (router.pathname == '/') {
-                                    ev.preventDefault()
-                                    document
-                                        .querySelector('#home')
-                                        ?.scrollIntoView({ behavior: 'smooth' })
-                                }
-                            }}
-                        >
+                        <a href="/">
                             <SanityImg
                                 className={clsx(
                                     'transition-all w-auto',

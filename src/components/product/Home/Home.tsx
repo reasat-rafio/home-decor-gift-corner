@@ -19,25 +19,16 @@ export const Home: React.FC<HomeProps> = (product) => {
 
     return (
         <section className="bg-antiFlashWhite py-section w-full ">
-            <div className="section grid grid-cols-12 gap-0 lg:gap-justify-center items-center overflow-hidden">
-                <div className="col-span-12 lg:col-span-6 ">
+            <div className="section grid grid-cols-12 gap-0 lg:justify-start items-start  ">
+                <div className="col-span-12 lg:col-span-4 lg:sticky top-10">
                     <Gallery>
                         <Swiper
                             className="my-16 grid items-center"
                             centerInsufficientSlides={true}
                             autoplay={{ disableOnInteraction: false }}
                             navigation
-                            breakpoints={{
-                                320: {
-                                    slidesPerView: 1,
-                                    spaceBetween: 10,
-                                },
-
-                                768: {
-                                    slidesPerView: 2,
-                                    spaceBetween: 20,
-                                },
-                            }}
+                            slidesPerView={1}
+                            spaceBetween={10}
                         >
                             {product?.images?.map((image, index) => (
                                 <SwiperSlide key={index}>
@@ -80,7 +71,7 @@ export const Home: React.FC<HomeProps> = (product) => {
                         </Swiper>
                     </Gallery>
                 </div>
-                <div className="col-span-12 lg:col-span-6 md:ml-16 ml-0 prose-sm lg:prose section_padding">
+                <div className="col-span-12 lg:col-span-8 md:ml-16 ml-0 prose-sm lg:prose section_padding  !max-w-none ">
                     <h1>{product.title}</h1>
                     {product?.brand && (
                         <div>
@@ -101,7 +92,7 @@ export const Home: React.FC<HomeProps> = (product) => {
                     <span className="text-yellow">{product.availbility}</span>
                     <h3>Product Description</h3>
                     <PortableText
-                        className="prose-yellow prose-sm lg:prose lg:prose-yellow max-w-none border-b"
+                        className="prose-yellow prose-sm lg:prose lg:prose-yellow !max-w-none border-b  "
                         blocks={product.body}
                     />
 

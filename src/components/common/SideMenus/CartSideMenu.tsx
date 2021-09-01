@@ -162,7 +162,7 @@ export const CartSideMenu: React.FC<{}> = ({}) => {
                                         <motion.button
                                             onClick={() => {
                                                 dispatch(HIDE_CART_SIDE_MENU())
-                                                // router.push("/shop");
+                                                router.push('/shop')
                                             }}
                                             whileHover={{ scale: [1, 1.1, 1, 1.1, 1] }}
                                             className="bg-gradient-to-r from-yellow-500 to-yellow-200 text-white rounded-md p-3 font-text text-sm font-bold"
@@ -179,17 +179,12 @@ export const CartSideMenu: React.FC<{}> = ({}) => {
                                 <p className="flex-1"> SUBTOTAL:</p>
                                 <p className="text-lightBlue">৳ {subTotal.toLocaleString()}</p>
                             </div>
-                            <button
-                                className="p-3 bg-gray rounded-lg text-sm font-text"
-                                onClick={redirectingToCartPageAction}
-                            >
-                                VIEW CART
-                            </button>
+
                             <button
                                 className="p-3 font-text bg-yellow text-white rounded-lg  text-sm font-semibold"
                                 onClick={() => {
                                     dispatch(HIDE_CART_SIDE_MENU())
-                                    //   router.push("/checkout");
+                                    router.push('/checkout')
                                 }}
                             >
                                 CHECKOUT

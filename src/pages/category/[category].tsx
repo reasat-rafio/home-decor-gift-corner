@@ -3,7 +3,7 @@ import { groq } from 'next-sanity'
 import { SanityProps } from 'next-sanity-extra'
 import { NextSeo } from 'next-seo'
 import { categoryQuery } from '../../../libs/query'
-import { sanityClient, sanityStaticProps, useSanityQuery } from '../../../utils/sanity'
+import { sanityStaticProps, useSanityQuery } from '../../../utils/sanity'
 import { Layout } from '../../components/common/Layout/Layout'
 import { Home } from '../../components/product/Home/Home'
 import { useRouter } from 'next/router'
@@ -14,11 +14,11 @@ import { TopMenu } from '../../components/shop/FilterSection/TopMenu'
 import { SmFilterDropDown } from '../../components/shop/FilterSection/SmFilterDropDown'
 import { Products } from '../../components/shop/Products'
 import { CategorySideMenu } from '../../components/common/SideMenus/CategorySideMenu'
-
+import { sanity } from '../../../utils/sanity'
 const pathsQuery = groq`*[_type == "category"]{slug}`
 
 export const getStaticPaths = async () => {
-    const slugs = await sanityClient('anonymous').fetch(pathsQuery)
+    const slugs = await sanity.sanityClient('anonymous').fetch(pathsQuery)
 
     return {
         paths: slugs
@@ -81,7 +81,7 @@ export default function Category(props: SanityProps) {
                     <div className="col-span-12 lg:col-span-9 xl:col-span-10 ">
                         <div className="hidden lg:block">
                             <TopMenu
-                                selectedSort={selectedSort}
+                                selectedSort={selectedSort as string}
                                 setSelectedSort={setSelectedSort}
                                 grid={grid}
                                 setGrid={setGrid}
@@ -92,14 +92,14 @@ export default function Category(props: SanityProps) {
                         <div className="block lg:hidden">
                             <SmFilterDropDown
                                 sorts={sorts}
-                                selectedSort={selectedSort}
+                                selectedSort={selectedSort as string}
                                 setSelectedSort={setSelectedSort}
                             />
                         </div>
 
                         <Products
                             products={sortedProducts}
-                            selectedSort={selectedSort}
+                            selectedSort={selectedSort as string}
                             grid={grid}
                         />
                     </div>

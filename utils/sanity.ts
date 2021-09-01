@@ -23,6 +23,8 @@ const config = {
 export const { imageUrlBuilder, PortableText, sanityStaticProps, useSanityQuery } =
     setupNextSanity(config)
 
+export const sanity = setupNextSanity(config)
+
 export const previewClient = sanityClient({
     dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
     projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,

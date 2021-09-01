@@ -22,13 +22,13 @@ export interface ProductsProps {
 export interface TopMenuProps {
     selectedSort: string
     grid: number
-    setSelectedSort: Dispatch<SetStateAction<string>>
+    setSelectedSort: Dispatch<SetStateAction<string | null>>
     setGrid: Dispatch<SetStateAction<number>>
     sorts: string[]
 }
 
 export interface SmFilterDropDownProps {
     sorts: string[]
-    setSelectedSort: Dispatch<SetStateAction<string>>
+    setSelectedSort: Dispatch<SetStateAction<string | null>>
     selectedSort: string
 }
