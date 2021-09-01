@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { previewClient } from '../../../utils/sanity'
 
-export default async function createComment(req: NextApiRequest, res: NextApiResponse) {
+export default async function PlaceOrder(req: NextApiRequest, res: NextApiResponse) {
     const {
         name,
         email,
@@ -17,7 +17,7 @@ export default async function createComment(req: NextApiRequest, res: NextApiRes
     } = JSON.parse(req.body)
 
     try {
-        await previewClient.create({
+        const result = await previewClient.create({
             _type: 'order',
             name,
             email,
@@ -38,20 +38,8 @@ export default async function createComment(req: NextApiRequest, res: NextApiRes
             }),
         })
 
-        // console.log(
-        //     name,
-        //     email,
-        //     phone,
-        //     tracking,
-        //     address,
-        //     note,
-        //     zipcode,
-        //     total,
-        //     orderPlacedAt,
-        //     orderedProducts,
-        // )
+        return res.json({ result })
     } catch (error) {
         return res.status(500).json({ message: `Couldn't submit comment`, error })
     }
-    return res.status(200).json({ message: 'Order submitted' })
 }

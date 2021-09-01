@@ -7,6 +7,8 @@ import { CheckBox } from '../common/Checkbox'
 import Input from '../common/Input'
 import TextArea from '../common/Textarea'
 import axios from 'axios'
+import router from 'next/router'
+import { LOADING_END, LOADING_START } from '../../store/dom'
 
 interface CheckoutFormProps {}
 
@@ -57,9 +59,9 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({}) => {
         phone,
         zipCode,
     }: CheckoutInputType) {
-        let response
         try {
-            response = await fetch('/api/place-order', {
+            dispatch(LOADING_START())
+            const res = await fetch('/api/place-order', {
                 method: 'POST',
                 body: JSON.stringify({
                     name: `${firstName} ${lastName}`,
@@ -77,9 +79,11 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({}) => {
                     }),
                 }),
             })
+            const data = await res.json()
+            dispatch(LOADING_END())
             dispatch(CONFIRM_ORDER())
             reset()
-            console.log(response)
+            router.push(`/order?id=${data.result._id}`)
         } catch (err) {
             console.log(err)
         }
@@ -178,7 +182,7 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({}) => {
                     />
                     <div className="flex w-full">
                         <Button
-                            disabled={inCartProducts.length > 0 ? false : true}
+                            disabled={inCartProducts.length === 0 ? true : false}
                             className="w-full sm:w-auto"
                         >
                             Place Order
