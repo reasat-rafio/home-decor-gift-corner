@@ -1,8 +1,15 @@
 import { v4 as uuidv4 } from 'uuid'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { previewClient } from '../../../utils/sanity'
+import { withApiAuthRequired, getSession } from '@auth0/nextjs-auth0'
 
-export default async function PlaceOrder(req: NextApiRequest, res: NextApiResponse) {
+export default withApiAuthRequired(async function PlaceOrder(
+    req: NextApiRequest,
+    res: NextApiResponse,
+) {
+    const session = getSession(req, res)
+    const userId = session?.user.sub
+
     const {
         name,
         email,
@@ -42,4 +49,4 @@ export default async function PlaceOrder(req: NextApiRequest, res: NextApiRespon
     } catch (error) {
         return res.status(500).json({ message: `Couldn't submit comment`, error })
     }
-}
+})

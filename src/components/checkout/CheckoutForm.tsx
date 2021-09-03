@@ -6,9 +6,9 @@ import Button from '../common/Button'
 import { CheckBox } from '../common/Checkbox'
 import Input from '../common/Input'
 import TextArea from '../common/Textarea'
-import axios from 'axios'
 import router from 'next/router'
 import { LOADING_END, LOADING_START } from '../../store/dom'
+import { useUser } from '@auth0/nextjs-auth0'
 
 interface CheckoutFormProps {}
 
@@ -31,6 +31,10 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({}) => {
         reset,
         formState: { errors },
     } = useForm<CheckoutInputType>()
+
+    const { user } = useUser()
+
+    console.log(user)
 
     const { inCartProducts } = useAppSelector(selectProduct)
     const dispatch = useAppDispatch()

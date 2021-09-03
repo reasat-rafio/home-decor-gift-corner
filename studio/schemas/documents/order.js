@@ -72,12 +72,18 @@ export default {
                 layout: 'radio',
             },
         },
-
         {
             name: 'total',
             title: 'Total',
             type: 'number',
             // readOnly: true,
+        },
+
+        {
+            title: 'Order By',
+            name: 'orderBy',
+            type: 'reference',
+            to: [{ type: 'users' }],
         },
     ],
 
