@@ -8,7 +8,7 @@ export default withApiAuthRequired(async function PlaceOrder(
     res: NextApiResponse,
 ) {
     const session = getSession(req, res)
-    const userId = session?.user.sub
+    const user = session?.user
 
     const {
         name,
@@ -24,6 +24,19 @@ export default withApiAuthRequired(async function PlaceOrder(
     } = JSON.parse(req.body)
 
     try {
+        // Saving the user to the database
+        const newUser = await previewClient.create({
+            _type: 'users',
+            name: user?.name,
+            email: user?.email,
+            nickname: user?.nickname,
+            picture: user?.picture,
+        })
+
+        console.log('===============newUser=====================')
+        console.log(newUser)
+        console.log('=============newUser=======================')
+
         const result = await previewClient.create({
             _type: 'order',
             name,

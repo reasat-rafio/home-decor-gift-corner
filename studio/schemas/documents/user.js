@@ -8,14 +8,9 @@ export default {
     fields: [
         { name: 'name', type: 'string', title: 'Name' },
         { name: 'email', title: 'Email', type: 'string' },
-        { name: 'picture', type: 'image', title: 'Picture' },
+        { name: 'picture', type: 'url', title: 'Picture' },
         { name: 'nickname', type: 'string', title: 'Nick Name' },
-        {
-            title: 'Order List',
-            name: 'orderList',
-            type: 'reference',
-            to: [{ type: 'order' }],
-        },
+        { name: 'auth0Id', type: 'string', title: 'Auth0Id', readOnly: true },
     ],
     preview: {
         select: {
