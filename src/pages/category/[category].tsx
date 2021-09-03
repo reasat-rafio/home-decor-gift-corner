@@ -45,7 +45,7 @@ export default function Category(props: SanityProps) {
     const [sortedProducts, setSortedProducts] = useState<ProductsProps[]>(products)
     const [selectedSort, setSelectedSort] = useState<string | null>(sorts[0])
     const [grid, setGrid] = useState(4)
-    const [selectedAvailability, setSelectAvailability] = useState('In Stock')
+    const [selectedAvailability, setSelectAvailability] = useState<string | null>('In Stock')
     const [queryName, setQueryName] = useState<string | string[] | undefined>('')
 
     useEffect(() => {
