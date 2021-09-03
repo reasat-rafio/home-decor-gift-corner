@@ -27,7 +27,7 @@ export default function IndexShop(props: SanityProps) {
     const [sortedProducts, setSortedProducts] = useState<ProductsProps[]>(products)
     const [selectedSort, setSelectedSort] = useState<string | null>(sorts[0])
     const [grid, setGrid] = useState(4)
-    const [selectedAvailability, setSelectAvailability] = useState('In Stock')
+    const [selectedAvailability, setSelectAvailability] = useState<string | null>('In Stock')
 
     useEffect(() => {
         let filterByAvailabilityProducts = products.filter(
@@ -57,9 +57,7 @@ export default function IndexShop(props: SanityProps) {
                         <div className="hidden lg:block">
                             <TopMenu
                                 selectedSort={selectedSort as string}
-                                setSelectedSort={
-                                    setSelectedSort as Dispatch<SetStateAction<string>>
-                                }
+                                setSelectedSort={setSelectedSort}
                                 grid={grid}
                                 setGrid={setGrid}
                                 sorts={sorts}
@@ -70,9 +68,7 @@ export default function IndexShop(props: SanityProps) {
                             <SmFilterDropDown
                                 sorts={sorts}
                                 selectedSort={selectedSort as string}
-                                setSelectedSort={
-                                    setSelectedSort as Dispatch<SetStateAction<string>>
-                                }
+                                setSelectedSort={setSelectedSort}
                             />
                         </div>
 

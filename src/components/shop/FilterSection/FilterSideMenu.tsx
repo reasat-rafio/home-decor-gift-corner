@@ -5,8 +5,8 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
 export const FilterSideMenu: React.FC<{
     category: category[]
-    setSelectAvailability: Dispatch<SetStateAction<string>>
-    selectedAvailability: string
+    setSelectAvailability: Dispatch<SetStateAction<string | null>>
+    selectedAvailability: string | null
 }> = ({ category, setSelectAvailability, selectedAvailability }) => {
     const availability = ['In Stock', 'Pre Order', 'Up Coming']
     const [queryName, setQueryName] = useState<string | string[] | undefined>('')
