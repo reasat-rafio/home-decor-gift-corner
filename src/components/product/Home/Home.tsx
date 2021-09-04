@@ -98,15 +98,15 @@ export const Home: React.FC<HomeProps> = (product) => {
 
                     {product.offer_price ? (
                         <p>
-                            <span className="!text-sm !line-through !mx-2 text-gray-600">
+                            <span className="!text-base !line-through !mx-2 text-gray-600">
                                 {product.price.toLocaleString()} ৳
                             </span>
-                            <span className="text-lg text-yellow">
+                            <span className="xl:text-4xl text-3xl  text-yellow">
                                 {product.offer_price.toLocaleString()} ৳
                             </span>
                         </p>
                     ) : (
-                        <span className="text-lg text-yellow">
+                        <span className="xl:text-4xl text-3xl  text-yellow ">
                             {product.price.toLocaleString()} ৳
                         </span>
                     )}

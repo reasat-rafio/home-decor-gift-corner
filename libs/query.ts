@@ -76,7 +76,7 @@ export const homeQuery = groq`{
 
 export const shopQuery = groq`{
   ${siteQuery}
-  "category" : *[_type == "category"]{
+  "category" : *[_type == "category"] | order(order asc){
     slug,
     title
   },
@@ -146,7 +146,7 @@ export const categoryQuery = groq`{
     slug,
     title
   },
-  "category" : *[_type == "category"]{
+  "category" : *[_type == "category"] | order(order asc){
     slug,
     title
   },

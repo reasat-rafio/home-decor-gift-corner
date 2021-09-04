@@ -10,46 +10,46 @@ export default {
             name: 'name',
             title: 'Name',
             type: 'string',
-            // readOnly: true,
+            readOnly: true,
         },
 
         {
             name: 'address',
             title: 'Address',
             type: 'string',
-            // readOnly: true,
+            readOnly: true,
         },
         {
             name: 'phone',
             title: 'Phone number',
             type: 'string',
-            // readOnly: true,
+            readOnly: true,
         },
         {
             name: 'email',
             title: 'Email',
             type: 'string',
-            // readOnly: true,
+            readOnly: true,
         },
         {
             name: 'zipCode',
             title: 'Zip Code',
             type: 'string',
-            // readOnly: true,
+            readOnly: true,
         },
 
         {
             name: 'note',
             title: 'Note',
             type: 'text',
-            // readOnly: true,
+            readOnly: true,
         },
 
         {
             name: 'orderPlacedAt',
             title: 'Ordedr Placed At',
             type: 'string',
-            // readOnly: true,
+            readOnly: true,
         },
 
         {
@@ -68,6 +68,7 @@ export default {
                     { title: 'Recived', value: 'Recived' },
                     { title: 'On The Way', value: 'On The Way' },
                     { title: 'Complete', value: 'Complete' },
+                    { title: 'Cancelled', value: 'Cancelled' },
                 ],
                 layout: 'radio',
             },
@@ -76,7 +77,7 @@ export default {
             name: 'total',
             title: 'Total',
             type: 'number',
-            // readOnly: true,
+            readOnly: true,
         },
 
         {
