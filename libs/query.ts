@@ -153,6 +153,16 @@ export const categoryQuery = groq`{
 }`
 
 export const orderQuery = groq`{
-  ${siteQuery},
-  "order" : *[_type == "order" && ]
+  ${siteQuery}
+  "order": *[_type == "order" &&_id == $order][0]{
+    ...,
+    orderedProducts[]{
+      ...,
+      product->{
+        title,
+        price,
+        offer_price
+      }
+    }
+  }
 }`

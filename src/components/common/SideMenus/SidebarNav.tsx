@@ -19,9 +19,7 @@ export const NavSideBars: React.FC<{
     const sidebarRef = useRef<HTMLDivElement | null>(null)
     useOutsideAlerter(sidebarRef, { dispatch: HIDE_SIDE_MENU })
     const { user, isLoading } = useUser()
-    console.log('====================================')
-    console.log(isLoading, user)
-    console.log('====================================')
+
     const closeSideMenubarAction = () => {
         dispatch(HIDE_SIDE_MENU())
     }

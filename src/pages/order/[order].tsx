@@ -14,53 +14,44 @@ import { SanityProps } from 'next-sanity-extra'
 // import { useEffect } from 'react'
 // import { useAppDispatch } from '../store/hooks'
 // import { ADD_ALL_PRODUCTS } from '../store/product'
-
-import { sanityStaticProps, useSanityQuery } from '../../../utils/sanity'
+import { sanity, sanityStaticProps, useSanityQuery } from '../../../utils/sanity'
 import { orderQuery } from '../../../libs/query'
+import groq from 'groq'
+import { Layout } from '../../components/common/Layout/Layout'
+import { renderObjectArray } from 'sanity-react-extra'
+import Container from '../../ui/container'
+import { OrderInformation } from '../../components/order/order-information'
+import { Newsletter } from '../../components/Home/Newletter'
 
-export const getStaticProps: GetStaticProps = async (context) => {
+const pathsQuery = groq`*[_type == "order"]{_id}`
+
+export const getStaticPaths = async () => {
+    const ids = await sanity.sanityClient('anonymous').fetch(pathsQuery)
+
     return {
-        props: {
-            props: await sanityStaticProps({ query: orderQuery, context }),
-            revalidate: 10,
-        },
+        paths: ids.filter((s: any) => s).map((s: any) => ({ params: { order: s._id } })),
+        fallback: false,
     }
 }
 
-function IndexPage(props: SanityProps) {
-    const {
-        data: { site },
-    } = useSanityQuery(orderQuery, props)
-    // const dispatch = useAppDispatch()
+export const getStaticProps: GetStaticProps = async (context) => ({
+    props: await sanityStaticProps({ query: orderQuery, context }),
+    revalidate: 10,
+})
 
-    // useEffect(() => {
-    //     dispatch(ADD_ALL_PRODUCTS(allProducts))
-    // }, [])
+function OrderPage(props: SanityProps) {
+    const {
+        data: { site, order },
+    } = useSanityQuery(orderQuery, props)
 
     return (
-        // <Layout {...site}>
-        //     <NextSeo title={seo.title} description={seo.description} />
-        //     {renderObjectArray(screens, {
-        //         'landing.home': Home,
-        //         'landing.policy': Policy,
-        //     })}
-        //     <DealsAndOffers special={special} offer={offer} bestSeller={bestSeller} deals={deals} />
-
-        //     <SanityImg
-        //         className="max-h-[350px] cursor-pointer"
-        //         builder={imageUrlBuilder}
-        //         image={poster}
-        //         height={550}
-        //     />
-        //     <LatestProducts latestProduct={latestProduct} />
-        //     {renderObjectArray(screens, {
-        //         'landing.reviews': Reviews,
-        //         'landing.newslatter': Newsletter,
-        //     })}
-        // </Layout>
-
-        <div>asdasd</div>
+        <Layout {...site}>
+            <Container className="mt-24">
+                <OrderInformation order={order} />
+                {/* <Newsletter /> */}
+            </Container>
+        </Layout>
     )
 }
 
-export default IndexPage
+export default OrderPage

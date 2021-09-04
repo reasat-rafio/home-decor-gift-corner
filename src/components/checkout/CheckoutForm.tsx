@@ -82,7 +82,7 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({}) => {
                         note: note,
                         zipcode: zipCode,
                         total: subTotal + 60,
-                        orderPlacedAt: `Order Placed At: ${new Date().toLocaleString()} `,
+                        orderPlacedAt: `${new Date().toLocaleString()}`,
                         orderedProducts: inCartProducts.map((item) => {
                             const _product = { id: item._id, qty: item.quantity }
                             return _product
@@ -91,9 +91,9 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({}) => {
                 })
                 const data = await res.json()
                 dispatch(LOADING_END())
-                // dispatch(CONFIRM_ORDER())
-                // reset()
-                // router.push(`/order/${data.result._id}`)
+                dispatch(CONFIRM_ORDER())
+                reset()
+                router.push(`/order/${data.result._id}`)
             } catch (err) {
                 console.log(err)
             }
