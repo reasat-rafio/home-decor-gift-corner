@@ -3,7 +3,7 @@ import { SanityImg } from 'sanity-react-extra'
 import { ReviewsProps } from '../../../libs/types/landingTypes'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Autoplay, EffectFade, Navigation, Pagination } from 'swiper'
-
+import 'swiper/swiper-bundle.css'
 import { imageUrlBuilder, PortableText } from '../../../utils/sanity'
 import { useWindowSize } from '../../../libs/hooks'
 import Container from '../../ui/container'

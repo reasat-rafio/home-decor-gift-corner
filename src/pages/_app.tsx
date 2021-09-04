@@ -3,7 +3,6 @@ import '../styles/global.css'
 import NProgress from 'nprogress'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
-import 'swiper/swiper-bundle.css'
 import { Provider } from 'react-redux'
 import { store } from '../store/store'
 import type { AppProps } from 'next/app'
@@ -32,7 +31,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     return (
         <UserProvider>
-            <main className="font-jost bg-antiFlashWhite">
+            <main className="font-jost">
                 <Head>
                     <link
                         rel="stylesheet"
