@@ -46,7 +46,9 @@
     "devDependencies": {
         "@sanity/cli": "^2.12.2",
         "@types/nprogress": "^0.2.0",
+        "@types/react-modal": "^3.12.1",
         "@types/react-text-truncate": "^0.14.1",
+        "@types/react-transition-group": "^4.4.2",
         "@types/uuid": "^8.3.1",
         "concurrently": "^5.3.0",
         "lerna": "^3.22.1",

@@ -6,7 +6,7 @@ import Button from '../common/Button'
 import { CheckBox } from '../common/Checkbox'
 import Input from '../common/Input'
 import TextArea from '../common/Textarea'
-import router from 'next/router'
+import { useRouter } from 'next/router'
 import { LOADING_END, LOADING_START } from '../../store/dom'
 import { useUser } from '@auth0/nextjs-auth0'
 
@@ -32,15 +32,18 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({}) => {
         formState: { errors },
     } = useForm<CheckoutInputType>()
 
-    const { user } = useUser()
+    const { user, isLoading } = useUser()
 
-    console.log(user)
+    const router = useRouter()
 
+    // ? GLOBAL STORE
     const { inCartProducts } = useAppSelector(selectProduct)
     const dispatch = useAppDispatch()
-    // items subtotal
+
+    // ? items subtotal ITEMS SUBTOTAL
     const [subTotal, setSubTotal] = useState<number>(0)
-    //  doing the sum of the items price
+
+    // ? doing the sum of the items price
     useEffect(() => {
         if (inCartProducts?.length) {
             const _subtotal = inCartProducts.reduce(
@@ -63,33 +66,37 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({}) => {
         phone,
         zipCode,
     }: CheckoutInputType) {
-        try {
-            dispatch(LOADING_START())
-            const res = await fetch('/api/place-order', {
-                method: 'POST',
-                body: JSON.stringify({
-                    name: `${firstName} ${lastName}`,
-                    email: email,
-                    phone: phone,
-                    tracking: 'Recived',
-                    address: address,
-                    note: note,
-                    zipcode: zipCode,
-                    total: subTotal + 60,
-                    orderPlacedAt: `Order Placed At: ${new Date().toLocaleString()} `,
-                    orderedProducts: inCartProducts.map((item) => {
-                        const _product = { id: item._id, qty: item.quantity }
-                        return _product
+        if (!user && !isLoading) {
+            router.push('/api/auth/login')
+        } else {
+            try {
+                dispatch(LOADING_START())
+                const res = await fetch('/api/place-order', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        name: `${firstName} ${lastName}`,
+                        email: email,
+                        phone: phone,
+                        tracking: 'Recived',
+                        address: address,
+                        note: note,
+                        zipcode: zipCode,
+                        total: subTotal + 60,
+                        orderPlacedAt: `Order Placed At: ${new Date().toLocaleString()} `,
+                        orderedProducts: inCartProducts.map((item) => {
+                            const _product = { id: item._id, qty: item.quantity }
+                            return _product
+                        }),
                     }),
-                }),
-            })
-            const data = await res.json()
-            dispatch(LOADING_END())
-            dispatch(CONFIRM_ORDER())
-            reset()
-            router.push(`/order?id=${data.result._id}`)
-        } catch (err) {
-            console.log(err)
+                })
+                const data = await res.json()
+                dispatch(LOADING_END())
+                // dispatch(CONFIRM_ORDER())
+                // reset()
+                // router.push(`/order/${data.result._id}`)
+            } catch (err) {
+                console.log(err)
+            }
         }
     }
 

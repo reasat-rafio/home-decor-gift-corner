@@ -1,7 +1,7 @@
 import { groq } from 'next-sanity'
 import { withDimensions } from 'sanity-react-extra'
 
-const siteQuery = `
+export const siteQuery = `
   "site": *[_id == "siteConfig"][0] {
     ...,
     "logo": ${withDimensions('logo')},
@@ -150,4 +150,9 @@ export const categoryQuery = groq`{
     slug,
     title
   },
+}`
+
+export const orderQuery = groq`{
+  ${siteQuery},
+  "order" : *[_type == "order" && ]
 }`

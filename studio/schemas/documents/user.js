@@ -11,6 +11,13 @@ export default {
         { name: 'picture', type: 'url', title: 'Picture' },
         { name: 'nickname', type: 'string', title: 'Nick Name' },
         { name: 'auth0Id', type: 'string', title: 'Auth0Id', readOnly: true },
+
+        {
+            name: 'ordersList',
+            title: 'Ordered Products',
+            type: 'array',
+            of: [{ type: 'reference', to: [{ type: 'order' }] }],
+        },
     ],
     preview: {
         select: {
