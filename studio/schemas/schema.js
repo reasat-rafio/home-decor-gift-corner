@@ -45,6 +45,10 @@ import orderedProducts from './objects/orderedProducts'
 // User
 import user from './documents/user'
 
+// Contact
+import contact from './pages/contact'
+import contactUs from './pages/contact/contact-us'
+
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
     // We name our schema
@@ -83,6 +87,9 @@ export default createSchema({
         landingReview,
         landingReviews,
         landingNewsLatter,
+
+        contact,
+        contactUs,
 
         Orders,
         orderedProducts,
