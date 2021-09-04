@@ -10,6 +10,7 @@
     },
     "dependencies": {
         "@auth0/nextjs-auth0": "^1.5.0",
+        "@headlessui/react": "^1.4.1",
         "@reduxjs/toolkit": "^1.6.0",
         "@sanity/client": "^2.11.0",
         "@sanity/image-url": "^0.140.22",

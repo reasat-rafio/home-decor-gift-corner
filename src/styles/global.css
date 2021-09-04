@@ -302,7 +302,7 @@
 
 /* nav */
 .nav-icon-styles {
-    @apply bg-yellow rounded-full p-2 cursor-pointer;
+    @apply bg-yellow rounded-full cursor-pointer;
 }
 
 .nav-icon {
