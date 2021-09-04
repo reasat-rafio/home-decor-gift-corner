@@ -94,6 +94,17 @@ export const shopQuery = groq`{
 
 export const contactQuery = groq`{
   ${siteQuery}
+  "contact" : *[_type == "contact"][0]{
+    ...,
+    contactUs{
+      ...,
+      info[]{
+        ...,
+        "icon": ${withDimensions('icon')},
+      },
+      "locationImage": ${withDimensions('locationImage')},
+    }
+  }
 }`
 
 export const checkoutQuery = groq`{
