@@ -32,7 +32,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     return (
         <UserProvider>
-            <main className="font-jost">
+            <main className="font-jost bg-antiFlashWhite">
                 <Head>
                     <link
                         rel="stylesheet"

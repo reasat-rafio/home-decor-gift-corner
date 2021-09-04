@@ -7,6 +7,7 @@ import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 import { useIntersection } from '../../../libs/hooks'
 import { Card } from '../common/Card'
 import { motion } from 'framer-motion'
+import Container from '../../ui/container'
 
 SwiperCore.use([Autoplay, EffectFade, Navigation])
 
@@ -17,7 +18,7 @@ export const LatestProducts: React.FC<LatestProductsProps> = ({ latestProduct })
 
     return (
         <section className="bg-antiFlashWhite py-section w-full">
-            <div className="section">
+            <Container>
                 <h2 className="section-title text-center  hover:text-yellow transition-colors duration-150 cursor-pointer">
                     LATEST PRODUCTS
                 </h2>
@@ -50,7 +51,7 @@ export const LatestProducts: React.FC<LatestProductsProps> = ({ latestProduct })
                                     spaceBetween: 50,
                                 },
                                 1536: {
-                                    slidesPerView: 4,
+                                    slidesPerView: 4.3,
                                     spaceBetween: 50,
                                 },
                             }}
@@ -100,7 +101,7 @@ export const LatestProducts: React.FC<LatestProductsProps> = ({ latestProduct })
                         </Swiper>
                     </div>
                 </div>
-            </div>
+            </Container>
         </section>
     )
 }

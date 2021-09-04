@@ -8,6 +8,7 @@ import 'swiper/swiper-bundle.css'
 import { motion } from 'framer-motion'
 import { useIntersection } from '../../../libs/hooks'
 import { ProductsProps } from '../../../libs/types/shopTypes'
+import Container from '../../ui/container'
 
 SwiperCore.use([Autoplay, EffectFade])
 
@@ -30,8 +31,8 @@ export const DealsAndOffers: React.FC<DealsAndOffersProps> = ({
     }, [activeDeal])
 
     return (
-        <section className="bg-antiFlashWhite py-section w-full">
-            <div className="section">
+        <section className="bg-antiFlashWhite w-full py-section">
+            <Container>
                 <h2 className="section-title text-center  hover:text-yellow transition-colors duration-150 cursor-pointer">
                     PRODUCTS
                 </h2>
@@ -70,7 +71,7 @@ export const DealsAndOffers: React.FC<DealsAndOffersProps> = ({
                                 spaceBetween: 50,
                             },
                             1536: {
-                                slidesPerView: 4,
+                                slidesPerView: 4.3,
                                 spaceBetween: 50,
                             },
                         }}
@@ -108,7 +109,7 @@ export const DealsAndOffers: React.FC<DealsAndOffersProps> = ({
                         ))}
                     </Swiper>
                 </div>
-            </div>
+            </Container>
         </section>
     )
 }

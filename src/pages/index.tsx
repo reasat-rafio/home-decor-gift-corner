@@ -48,9 +48,8 @@ function IndexPage(props: SanityProps) {
                 'landing.policy': Policy,
             })}
             <DealsAndOffers special={special} offer={offer} bestSeller={bestSeller} deals={deals} />
-
             <SanityImg
-                className="max-h-[350px] cursor-pointer"
+                className="lg:max-h-[350px] lg:h-auto h-28  cursor-pointer"
                 builder={imageUrlBuilder}
                 image={poster}
                 height={550}
