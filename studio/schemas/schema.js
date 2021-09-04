@@ -49,6 +49,9 @@ import user from './documents/user'
 import contact from './pages/contact'
 import contactUs from './pages/contact/contact-us'
 
+import termsAndService from './pages/terms-and-service'
+import privacyPolicy from './pages/privacy-policy'
+
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
     // We name our schema
@@ -90,6 +93,9 @@ export default createSchema({
 
         contact,
         contactUs,
+
+        termsAndService,
+        privacyPolicy,
 
         Orders,
         orderedProducts,

@@ -1,11 +1,11 @@
 import S from '@sanity/desk-tool/structure-builder'
 import { GrEdit, GrView, GrWorkshop, GrContact } from 'react-icons/gr'
 import * as React from 'react'
-import { IoIosPeople } from 'react-icons/io'
 import { FaSitemap, FaHome, FaWindowRestore } from 'react-icons/fa'
 import { MdLocalDrink } from 'react-icons/md'
 import { CgWebsite } from 'react-icons/cg'
-import { GrLaunch, GrMapLocation, GrContactInfo } from 'react-icons/gr'
+import { GrContactInfo, GrServices } from 'react-icons/gr'
+import { SiGnuprivacyguard } from 'react-icons/si'
 
 function SitePreview({ document, options }) {
     if (!process.env.SANITY_STUDIO_PREVIEW_URL) {
@@ -93,6 +93,18 @@ export default () =>
                                 title: 'Contact',
                                 icon: GrContactInfo,
                             }),
+                            singleItem({
+                                schemaType: 'termsAndServices',
+                                id: 'termsAndServices',
+                                title: 'Terms And Services',
+                                icon: GrServices,
+                            }),
+                            singleItem({
+                                schemaType: 'privacyPolicy',
+                                id: 'privacyPolicy',
+                                title: 'Privacy Policy',
+                                icon: SiGnuprivacyguard,
+                            }),
                         ]),
                 ),
 
@@ -109,20 +121,8 @@ export default () =>
                         'landingPage',
                         'tags',
                         'contact',
-                        // 'site',
-                        // 'landingPage',
-                        // 'news',
-                        // 'contact',
-                        // 'partners',
-                        // 'peoples',
-                        // 'positions',
-                        // 'bookNowPopup',
-                        // 'peopleDetails',
-                        // 'adulting101',
-                        // 'contactUs',
-                        // 'careers',
-                        // 'approach',
-                        // 'ourPeople',
+                        'termsAndServices',
+                        'privacyPolicy',
                     ].includes(item.getId()),
             ),
         ])

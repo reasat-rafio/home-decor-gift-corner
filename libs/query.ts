@@ -177,3 +177,13 @@ export const orderQuery = groq`{
     }
   }
 }`
+
+export const termsAndServicesQuery = groq`{
+    ${siteQuery}
+    "termsAndServices" : *[_type == "termsAndServices"][0]  
+}`
+
+export const privacyPoliciesQuery = groq`{
+  ${siteQuery}
+  "privacyPolicy" : *[_type == "privacyPolicy"][0]  
+}`
