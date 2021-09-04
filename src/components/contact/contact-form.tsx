@@ -2,6 +2,9 @@ import { useForm } from 'react-hook-form'
 import Button from '../common/Button'
 import Input from '../common/Input'
 import TextArea from '../common/Textarea'
+import { useFormspark } from '@formspark/use-formspark'
+import { useAppDispatch } from '../../store/hooks'
+import { LOADING_END, LOADING_START } from '../../store/dom'
 
 interface ContactFormValues {
     name: string
@@ -14,10 +17,27 @@ const ContactForm: React.FC = () => {
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm<ContactFormValues>()
-    function onSubmit(values: ContactFormValues) {
-        console.log(values, 'contact')
+
+    const dispatch = useAppDispatch()
+
+    const [submit, submitting] = useFormspark({
+        formId: process.env.NEXT_PUBLIC_FORMID as string,
+    })
+
+    async function onSubmit({ email, message, name, subject }: ContactFormValues) {
+        try {
+            dispatch(LOADING_START())
+            await submit({ email, name, subject, message })
+            dispatch(LOADING_END())
+            reset({})
+        } catch (error) {
+            console.log('====================================')
+            console.log(error)
+            console.log('====================================')
+        }
     }
 
     return (
@@ -35,11 +55,13 @@ const ContactForm: React.FC = () => {
                         className="w-full md:w-1/2 "
                         errorKey={errors.name?.message}
                         variant="solid"
+                        disabled={submitting}
                     />
                     <Input
                         labelKey="Your Email"
                         type="email"
                         placeholderKey="Enter Your Email"
+                        disabled={submitting}
                         {...register('email', {
                             required: 'Email is required',
                             pattern: {
@@ -53,6 +75,7 @@ const ContactForm: React.FC = () => {
                     />
                 </div>
                 <Input
+                    disabled={submitting}
                     labelKey="Subject"
                     {...register('subject', { required: 'Your subject is required' })}
                     className="relative"
@@ -61,6 +84,7 @@ const ContactForm: React.FC = () => {
                     variant="solid"
                 />
                 <TextArea
+                    disabled={submitting}
                     labelKey="Message"
                     {...register('message')}
                     className="relative mb-4"
@@ -68,6 +92,7 @@ const ContactForm: React.FC = () => {
                 />
                 <div className="relative">
                     <Button
+                        disabled={submitting}
                         type="submit"
                         className="h-12 lg:h-14 mt-1 text-sm lg:text-base w-full sm:w-auto !bg-yellow"
                     >

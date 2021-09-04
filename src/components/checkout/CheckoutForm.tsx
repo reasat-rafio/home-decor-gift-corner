@@ -33,7 +33,6 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({}) => {
     } = useForm<CheckoutInputType>()
 
     const { user, isLoading } = useUser()
-
     const router = useRouter()
 
     // ? GLOBAL STORE
