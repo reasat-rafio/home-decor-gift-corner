@@ -1,22 +1,41 @@
-// import { yupResolver } from "@hookform/resolvers/yup";
-
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { SanityImg } from 'sanity-react-extra'
 import { NewsletterProps } from '../../../libs/types/landingTypes'
 import { imageUrlBuilder } from '../../../utils/sanity'
-
-// import { Notify } from "../../../utils/Toast";
-// import { NewsletterSchema } from "../../../utils/yupSchema";
+import { LOADING_END, LOADING_START } from '../../store/dom'
+import { useAppDispatch } from '../../store/hooks'
 
 export const Newsletter: React.FC<NewsletterProps> = ({ headline, description, icon }) => {
-    // Setting up Yup as useFrom resolver
-    //    const { handleSubmit, register, errors } = useForm({
-    //       mode: "onBlur",
-    //       resolver: yupResolver(NewsletterSchema),
-    //    });
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors },
+    } = useForm<{ email: string }>()
 
-    // Form Submit action
+    const dispatch = useAppDispatch()
+
+    const onSubmit = async ({ email }: { email: string }) => {
+        try {
+            dispatch(LOADING_START())
+            const res = await fetch('/api/subscribe', {
+                body: JSON.stringify({
+                    email,
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                method: 'POST',
+            })
+
+            const result = await res.json()
+            reset({})
+            dispatch(LOADING_END())
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <section className="w-full bg-yellow mt-20">
@@ -41,15 +60,18 @@ export const Newsletter: React.FC<NewsletterProps> = ({ headline, description, i
                         </div>
 
                         <div className="mt-12 lg:mt-0 lg:ml-16 w-full sm:w-auto">
-                            <form className="text-sm max-w-sm sm:max-w-none mx-auto">
+                            <form
+                                className="text-sm max-w-sm sm:max-w-none mx-auto"
+                                onSubmit={handleSubmit(onSubmit)}
+                            >
                                 <input
                                     type="email"
-                                    name="email"
+                                    {...register('email', { required: 'email is required' })}
                                     className="w-full sm:w-auto block sm:inline-block px-6 py-4 rounded text-ac tracking-wider font-bold   focus:outline-none sm:rounded-r-none  transition duration-300 text-gray-700 bg-white  focus:ring-2"
                                 />
 
                                 <button
-                                    //   type="submit"
+                                    type="submit"
                                     className="w-full sm:w-auto mt-6 sm:mt-0 sm:rounded-l-none py-4 bg-[#212122] hover px-8  font-bold rounded text-gray-300  transition duration-300 "
                                 >
                                     Subscribe Now

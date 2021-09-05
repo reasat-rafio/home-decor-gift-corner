@@ -6,6 +6,7 @@ import { sanityStaticProps, useSanityQuery } from '../../utils/sanity'
 import { CheckoutCard } from '../components/checkout/CheckoutCard'
 import { CheckoutForm } from '../components/checkout/CheckoutForm'
 import { Layout } from '../components/common/Layout/Layout'
+import { Newsletter, NewsletterProps } from '../components/common/newsletter'
 import Container from '../ui/container'
 
 export const getStaticProps: GetStaticProps = async (context) => ({
@@ -15,12 +16,12 @@ export const getStaticProps: GetStaticProps = async (context) => ({
 
 export default function checkout(props: SanityProps) {
     const {
-        data: { site },
+        data: { site, newslatter },
     } = useSanityQuery(checkoutQuery, props)
 
     return (
         <Layout {...site}>
-            <Container className="mt-16">
+            <Container className="py-section">
                 <div className="py-14 xl:py-20 px-0 2xl:max-w-screen-2xl xl:max-w-screen-xl mx-auto flex flex-col md:flex-row w-full">
                     <div className="md:w-full lg:w-3/5 flex  h-full flex-col -mt-1.5">
                         <CheckoutForm />
@@ -29,6 +30,7 @@ export default function checkout(props: SanityProps) {
                         <CheckoutCard />
                     </div>
                 </div>
+                <Newsletter newsletter={newslatter} />
             </Container>
         </Layout>
     )

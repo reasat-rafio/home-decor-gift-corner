@@ -15,6 +15,14 @@ export const siteQuery = `
   },
 `
 
+const newslatter = `
+  "newslatter": *[_id == "newslatter"][0]{
+    headline,
+    description,
+    ctaButton
+  }
+`
+
 const productCardQuery = (queryName: string, dealName: string) => `
 "${queryName}": *[_type == "product" && (deals[0]->.title == "${dealName}" || deals[1]->.title == "${dealName}" || deals[2]->.title == "${dealName}")]|order(_createdAt desc)[0...4] {
   "mainImage": ${withDimensions('mainImage')},
@@ -94,6 +102,7 @@ export const shopQuery = groq`{
 
 export const contactQuery = groq`{
   ${siteQuery}
+  ${newslatter},
   "contact" : *[_type == "contact"][0]{
     ...,
     contactUs{
@@ -109,6 +118,7 @@ export const contactQuery = groq`{
 
 export const checkoutQuery = groq`{
   ${siteQuery}
+  ${newslatter}
 }`
 
 export const aboutQuery = groq`{
@@ -165,6 +175,7 @@ export const categoryQuery = groq`{
 
 export const orderQuery = groq`{
   ${siteQuery}
+  ${newslatter}
   "order": *[_type == "order" &&_id == $order][0]{
     ...,
     orderedProducts[]{

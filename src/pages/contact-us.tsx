@@ -3,6 +3,7 @@ import { SanityProps } from 'next-sanity-extra'
 import { contactQuery } from '../../libs/query'
 import { sanityStaticProps, useSanityQuery } from '../../utils/sanity'
 import { Layout } from '../components/common/Layout/Layout'
+import { Newsletter } from '../components/common/newsletter'
 import ContactForm from '../components/contact/contact-form'
 import ContactInfoBlock from '../components/contact/contact-info'
 import Container from '../ui/container'
@@ -14,10 +15,8 @@ export const getStaticProps: GetStaticProps = async (context) => ({
 
 export default function Contact(props: SanityProps) {
     const {
-        data: { site, contact },
+        data: { site, contact, newslatter },
     } = useSanityQuery(contactQuery, props)
-
-    console.log(contact)
 
     return (
         <Layout {...site}>
@@ -35,6 +34,7 @@ export default function Contact(props: SanityProps) {
                         <ContactForm />
                     </div>
                 </div>
+                <Newsletter newsletter={newslatter} />
             </Container>
         </Layout>
     )

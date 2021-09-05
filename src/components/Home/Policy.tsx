@@ -37,12 +37,15 @@ export const Policy: React.FC<PolicyProps> = ({ title }) => {
                     loopedSlides={title.length}
                     loop={windowWidth >= 640 ? false : true}
                     centerInsufficientSlides={true}
-                    autoplay={{ disableOnInteraction: true }}
+                    autoplay
                 >
                     {title.map((data, index) => (
                         <SwiperSlide
                             key={index}
-                            className={clsx('text-primary', index === 1 && 'border-r border-l')}
+                            className={clsx(
+                                'text-primary',
+                                index === 1 && ' lg:border-r lg:border-l',
+                            )}
                         >
                             <SanityImg
                                 className="mx-auto h-[30px] lg:h-[50px]"

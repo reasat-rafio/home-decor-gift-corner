@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { CONFIRM_ORDER, selectProduct } from '../../store/product'
-import Button from '../common/Button'
-import { CheckBox } from '../common/Checkbox'
-import Input from '../common/Input'
-import TextArea from '../common/Textarea'
+import Button from '../../ui/Button'
+import { CheckBox } from '../../ui/Checkbox'
+import Input from '../../ui/Input'
+import TextArea from '../../ui/Textarea'
 import { useRouter } from 'next/router'
 import { LOADING_END, LOADING_START } from '../../store/dom'
 import { useUser } from '@auth0/nextjs-auth0'
@@ -193,7 +193,7 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({}) => {
                     <div className="flex w-full">
                         <Button
                             disabled={inCartProducts.length === 0 ? true : false}
-                            className="w-full sm:w-auto"
+                            className="w-full sm:w-auto !bg-yellow"
                         >
                             Place Order
                         </Button>

@@ -52,6 +52,9 @@ import contactUs from './pages/contact/contact-us'
 import termsAndService from './pages/terms-and-service'
 import privacyPolicy from './pages/privacy-policy'
 
+// Shared
+import newsletter from './documents/shared/newsletter'
+
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
     // We name our schema
@@ -68,6 +71,7 @@ export default createSchema({
         deal,
         brand,
         siteConfig,
+        newsletter,
         tag,
         // When added to this list, object types can be used as
         SEO,

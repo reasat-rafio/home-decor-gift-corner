@@ -1,7 +1,7 @@
 import S from '@sanity/desk-tool/structure-builder'
 import { GrEdit, GrView, GrWorkshop, GrContact } from 'react-icons/gr'
 import * as React from 'react'
-import { FaSitemap, FaHome, FaWindowRestore } from 'react-icons/fa'
+import { FaSitemap, FaHome, FaCreativeCommonsShare } from 'react-icons/fa'
 import { MdLocalDrink } from 'react-icons/md'
 import { CgWebsite } from 'react-icons/cg'
 import { GrContactInfo, GrServices } from 'react-icons/gr'
@@ -71,7 +71,26 @@ export default () =>
                         ]),
                 ),
             //   S.documentTypeListItem('positions').title('Opening Positions'),
-
+            S.divider(),
+            S.listItem()
+                .title('Shared')
+                .icon(FaCreativeCommonsShare)
+                .child(
+                    S.list()
+                        .title('Shared')
+                        .items([
+                            pageItem({
+                                schemaType: 'newslatter',
+                                id: 'newslatter',
+                                title: 'Newslatter',
+                                icon: FaHome,
+                                slug: '',
+                            }),
+                        ]),
+                ),
+            S.divider(),
+            S.documentTypeListItem('order').title('Orders'),
+            S.documentTypeListItem('users').title('Users'),
             S.divider(),
             S.listItem()
                 .title('Pages')
@@ -123,6 +142,9 @@ export default () =>
                         'contact',
                         'termsAndServices',
                         'privacyPolicy',
+                        'newslatter',
+                        'order',
+                        'users',
                     ].includes(item.getId()),
             ),
         ])

@@ -6,6 +6,7 @@ import groq from 'groq'
 import { Layout } from '../../components/common/Layout/Layout'
 import Container from '../../ui/container'
 import { OrderInformation } from '../../components/order/order-information'
+import { Newsletter } from '../../components/common/newsletter'
 
 const pathsQuery = groq`*[_type == "order"]{_id}`
 
@@ -25,14 +26,14 @@ export const getStaticProps: GetStaticProps = async (context) => ({
 
 function OrderPage(props: SanityProps) {
     const {
-        data: { site, order },
+        data: { site, order, newslatter },
     } = useSanityQuery(orderQuery, props)
 
     return (
         <Layout {...site}>
             <Container className="mt-16">
                 <OrderInformation order={order} />
-                {/* <Newsletter /> */}
+                <Newsletter newsletter={newslatter} />
             </Container>
         </Layout>
     )
