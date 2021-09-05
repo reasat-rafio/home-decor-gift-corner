@@ -1,5 +1,7 @@
 import { GetStaticProps } from 'next'
 import { SanityProps } from 'next-sanity-extra'
+import { NextSeo } from 'next-seo'
+import { openGraphImages } from '../../libs/helpers'
 import { contactQuery } from '../../libs/query'
 import { sanityStaticProps, useSanityQuery } from '../../utils/sanity'
 import { Layout } from '../components/common/Layout/Layout'
@@ -20,6 +22,13 @@ export default function Contact(props: SanityProps) {
 
     return (
         <Layout {...site}>
+            <NextSeo
+                title={contact.seo.title}
+                description={contact.seo.description}
+                openGraph={{
+                    images: openGraphImages({ img: contact.seo.seoImage }),
+                }}
+            />
             <Container className="py-section">
                 <div className="my-14 lg:my-16 xl:my-20 px-0 pb-2 lg: xl:max-w-screen-xl mx-auto flex flex-col md:flex-row w-full">
                     <div className="md:w-full lg:w-2/5 2xl:w-2/6 flex flex-col h-full">

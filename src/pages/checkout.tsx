@@ -1,5 +1,6 @@
 import { GetStaticProps } from 'next'
 import { SanityProps } from 'next-sanity-extra'
+import { NextSeo } from 'next-seo'
 import React from 'react'
 import { checkoutQuery } from '../../libs/query'
 import { sanityStaticProps, useSanityQuery } from '../../utils/sanity'
@@ -21,6 +22,11 @@ export default function checkout(props: SanityProps) {
 
     return (
         <Layout {...site}>
+            <NextSeo
+                title="Cheeck Out | Home Decor And Gift Corner"
+                // description=""
+            />
+
             <Container className="py-section">
                 <div className="py-14 xl:py-20 px-0 2xl:max-w-screen-2xl xl:max-w-screen-xl mx-auto flex flex-col md:flex-row w-full">
                     <div className="md:w-full lg:w-3/5 flex  h-full flex-col -mt-1.5">

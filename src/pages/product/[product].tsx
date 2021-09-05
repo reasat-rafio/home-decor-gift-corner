@@ -8,6 +8,7 @@ import { Layout } from '../../components/common/Layout/Layout'
 import { Home } from '../../components/product/Home/Home'
 import { RelatedProducts } from '../../components/product/Home/RelatedProducts'
 import { sanity } from '../../../utils/sanity'
+import { openGraphImages } from '../../../libs/helpers'
 
 const pathsQuery = groq`*[_type == 'product']{slug}`
 
@@ -34,7 +35,13 @@ export default function Product(props: SanityProps) {
 
     return (
         <Layout {...site}>
-            <NextSeo title={product.title} description={product.body[0].children[0].text} />
+            <NextSeo
+                title={product.title}
+                description={product.body[0].children[0].text}
+                openGraph={{
+                    images: openGraphImages({ img: product.mainImage }),
+                }}
+            />
             <Home {...product} />
             <RelatedProducts products={product.related_product} />
         </Layout>

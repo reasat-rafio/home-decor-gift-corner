@@ -65,7 +65,7 @@ export default function Category(props: SanityProps) {
     return (
         <Layout {...site}>
             <NextSeo
-                title={`CATEGORY | ${queryName}`}
+                title={`CATEGORY | ${queryName} | Home Decor And Gift Corners`}
                 description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc egestas euismod sem eu volutpat. Sed quis ultricies nulla. Sed convallis, ex quis luctus ultricies, risus eros gravida turpis, id varius risus velit quis mauris"
             />
             <section className="bg-antiFlashWhite py-section w-screen">

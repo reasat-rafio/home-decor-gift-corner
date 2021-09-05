@@ -16,7 +16,7 @@ SwiperCore.use([Autoplay, EffectFade, Navigation])
 export const Home: React.FC<HomeProps> = (product) => {
     const [quantity, setQuantity] = useState(1)
     const windowWidth = useWindowSize()?.width ?? 0
-    // import 'swiper/css/swiper.css';
+
     return (
         <section className="bg-antiFlashWhite py-section w-full ">
             <div className="section grid grid-cols-12 gap-0 lg:justify-start items-start  ">

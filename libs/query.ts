@@ -109,6 +109,10 @@ export const contactQuery = groq`{
   ${newslatter}
   "contact" : *[_type == "contact"][0]{
     ...,
+    seo {
+        ...,
+        "seoImage": ${withDimensions('seoImage')},
+     },
     contactUs{
       ...,
       info[]{
@@ -195,10 +199,22 @@ export const orderQuery = groq`{
 
 export const termsAndServicesQuery = groq`{
     ${siteQuery}
-    "termsAndServices" : *[_type == "termsAndServices"][0]  
+    "termsAndServices" : *[_type == "termsAndServices"][0]  {
+      ...,
+      seo {
+        ...,
+        "seoImage": ${withDimensions('seoImage')},
+     },
+    }
 }`
 
 export const privacyPoliciesQuery = groq`{
   ${siteQuery}
-  "privacyPolicy" : *[_type == "privacyPolicy"][0]  
+  "privacyPolicy" : *[_type == "privacyPolicy"][0] {
+    ...,
+    seo {
+        ...,
+        "seoImage": ${withDimensions('seoImage')},
+     },
+  } 
 }`

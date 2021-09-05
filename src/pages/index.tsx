@@ -15,6 +15,7 @@ import { Newsletter } from '../components/Home/Newletter'
 import { useEffect } from 'react'
 import { useAppDispatch } from '../store/hooks'
 import { ADD_ALL_PRODUCTS } from '../store/product'
+import { openGraphImages } from '../../libs/helpers'
 
 export const getStaticProps: GetStaticProps = async (context) => ({
     props: await sanityStaticProps({ query: homeQuery, context }),
@@ -46,7 +47,7 @@ function IndexPage(props: SanityProps) {
                 title={seo.title}
                 description={seo.description}
                 openGraph={{
-                    images: seo.seoImage,
+                    images: openGraphImages({ img: seo.seoImage }),
                 }}
             />
             {renderObjectArray(screens, {

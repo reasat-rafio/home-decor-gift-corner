@@ -7,6 +7,7 @@ import { Layout } from '../../components/common/Layout/Layout'
 import Container from '../../ui/container'
 import { OrderInformation } from '../../components/order/order-information'
 import { Newsletter } from '../../components/common/newsletter'
+import { NextSeo } from 'next-seo'
 
 const pathsQuery = groq`*[_type == "order"]{_id}`
 
@@ -31,6 +32,7 @@ function OrderPage(props: SanityProps) {
 
     return (
         <Layout {...site}>
+            <NextSeo title="Orders | Home Decor And Gift Corner" />
             <Container className="mt-16">
                 <OrderInformation order={order} />
                 <Newsletter newsletter={newslatter} />
