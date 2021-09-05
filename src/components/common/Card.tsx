@@ -6,6 +6,7 @@ import { SHOW_CART_SIDE_MENU } from '../../store/dom'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
 import { ADD_TO_THE_CART, PLUS_QUANTITY, selectProduct } from '../../store/product'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 interface CardProps {
     product: ProductsProps
@@ -15,14 +16,15 @@ export const Card: React.FC<CardProps> = ({ product }) => {
     const dispatch = useAppDispatch()
     const productsAddedInCart = useAppSelector(selectProduct)
     const _product = { ...product, quantity: 1 }
+    const router = useRouter()
 
-    const addToCartAction = (): void => {
+    const addToCartAction = ({ redirect }: { redirect?: boolean }) => {
         const doesExistInCart: boolean = productsAddedInCart.inCartProducts.some(
             (product) => product.title == _product.title,
         )
 
         doesExistInCart ? dispatch(PLUS_QUANTITY(_product)) : dispatch(ADD_TO_THE_CART(_product))
-        dispatch(SHOW_CART_SIDE_MENU())
+        redirect ? router.push('/checkout') : dispatch(SHOW_CART_SIDE_MENU())
     }
 
     return (
@@ -59,10 +61,15 @@ export const Card: React.FC<CardProps> = ({ product }) => {
                 )}
 
                 <div className="grid grid-cols-12 justify-start items-center w-full gap-2">
-                    <button className="cardBtn" onClick={addToCartAction}>
+                    <button
+                        className="cardBtn"
+                        onClick={() => addToCartAction({ redirect: false })}
+                    >
                         ADD TO CART
                     </button>
-                    <button className="cardBtn">SHOP NOW</button>
+                    <button className="cardBtn" onClick={() => addToCartAction({ redirect: true })}>
+                        SHOP NOW
+                    </button>
                 </div>
             </div>
         </div>
