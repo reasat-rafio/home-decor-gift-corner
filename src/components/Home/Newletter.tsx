@@ -1,6 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { SanityImg } from 'sanity-react-extra'
+import { showError, showSuccess } from '../../../libs/helpers'
 import { NewsletterProps } from '../../../libs/types/landingTypes'
 import { imageUrlBuilder } from '../../../utils/sanity'
 import { LOADING_END, LOADING_START } from '../../store/dom'
@@ -28,12 +29,15 @@ export const Newsletter: React.FC<NewsletterProps> = ({ headline, description, i
                 },
                 method: 'POST',
             })
-
             const result = await res.json()
-            reset({})
+
             dispatch(LOADING_END())
+            showSuccess(dispatch)
+
+            reset({})
         } catch (error) {
-            console.log(error)
+            dispatch(LOADING_END())
+            showError(dispatch)
         }
     }
 

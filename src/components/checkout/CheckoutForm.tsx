@@ -9,6 +9,7 @@ import TextArea from '../../ui/Textarea'
 import { useRouter } from 'next/router'
 import { LOADING_END, LOADING_START } from '../../store/dom'
 import { useUser } from '@auth0/nextjs-auth0'
+import { showError, showSuccess } from '../../../libs/helpers'
 
 interface CheckoutFormProps {}
 
@@ -91,9 +92,12 @@ export const CheckoutForm: React.FC<CheckoutFormProps> = ({}) => {
                 const data = await res.json()
                 dispatch(LOADING_END())
                 dispatch(CONFIRM_ORDER())
-                reset()
+                showSuccess(dispatch)
+                reset({})
                 router.push(`/order/${data.result._id}`)
             } catch (err) {
+                dispatch(LOADING_END())
+                showError(dispatch)
                 console.log(err)
             }
         }

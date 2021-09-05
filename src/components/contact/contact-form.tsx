@@ -5,6 +5,7 @@ import TextArea from '../../ui/Textarea'
 import { useFormspark } from '@formspark/use-formspark'
 import { useAppDispatch } from '../../store/hooks'
 import { LOADING_END, LOADING_START } from '../../store/dom'
+import { showError, showSuccess } from '../../../libs/helpers'
 
 interface ContactFormValues {
     name: string
@@ -32,11 +33,12 @@ const ContactForm: React.FC = () => {
             dispatch(LOADING_START())
             await submit({ email, name, subject, message })
             dispatch(LOADING_END())
+            showSuccess(dispatch)
             reset({})
         } catch (error) {
-            console.log('====================================')
+            dispatch(LOADING_END())
+            showError(dispatch)
             console.log(error)
-            console.log('====================================')
         }
     }
 

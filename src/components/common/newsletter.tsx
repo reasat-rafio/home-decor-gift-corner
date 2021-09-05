@@ -1,5 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { showError, showSuccess } from '../../../libs/helpers'
 import { LOADING_END, LOADING_START } from '../../store/dom'
 import { useAppDispatch } from '../../store/hooks'
 import Button from '../../ui/Button'
@@ -37,10 +38,12 @@ export const Newsletter: React.FC<NewsletterProps> = ({ newsletter }) => {
             })
 
             const result = await res.json()
-            reset({})
             dispatch(LOADING_END())
+            showSuccess(dispatch)
+            reset({})
         } catch (error) {
-            console.log(error)
+            dispatch(LOADING_END())
+            showError(dispatch)
         }
     }
 

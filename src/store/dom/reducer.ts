@@ -12,6 +12,8 @@ import {
     CLEAR,
     SHOW_SHOP_CATEGORY_SIDE_MENU,
     HIDE_SHOP_CATEGORY_SIDE_MENU,
+    SUCCESS,
+    ERROR,
 } from './actions'
 
 interface DomState {
@@ -21,9 +23,13 @@ interface DomState {
     showShopCategorySideMenu: boolean
     isLoading: boolean
     showCartSideMenu: boolean
+    error: boolean
+    success: boolean
 }
 
 const initialState: DomState = {
+    error: false,
+    success: false,
     isLoggedIn: false,
     showSideMenu: false,
     showCartSideMenu: false,
@@ -60,6 +66,12 @@ export const domReducer = createReducer(initialState, (builder) => {
         })
         .addCase(LOADING_END, (state) => {
             state.isLoading = false
+        })
+        .addCase(SUCCESS, (state) => {
+            state.success = !state.success
+        })
+        .addCase(ERROR, (state) => {
+            state.error = !state.error
         })
         .addCase(CLEAR, () => initialState)
 })
