@@ -42,7 +42,13 @@ function IndexPage(props: SanityProps) {
 
     return (
         <Layout {...site}>
-            <NextSeo title={seo.title} description={seo.description} />
+            <NextSeo
+                title={seo.title}
+                description={seo.description}
+                openGraph={{
+                    images: seo.seoImage,
+                }}
+            />
             {renderObjectArray(screens, {
                 'landing.home': Home,
                 'landing.policy': Policy,

@@ -41,6 +41,10 @@ export const homeQuery = groq`{
     "landingPage": *[_id == "landingPage"][0] {
         ...,
         "poster": ${withDimensions('poster')},
+        seo{
+          ...,
+          "seoImage": ${withDimensions('seoImage')},
+        },
          screens[] {
             ...,
             "backgroundImage": ${withDimensions('backgroundImage')},
