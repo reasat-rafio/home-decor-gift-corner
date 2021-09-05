@@ -16,7 +16,7 @@ export const getStaticPaths = async () => {
 
     return {
         paths: ids.filter((s: any) => s).map((s: any) => ({ params: { order: s._id } })),
-        fallback: false,
+        fallback: true,
     }
 }
 

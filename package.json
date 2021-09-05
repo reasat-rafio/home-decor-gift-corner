@@ -24,6 +24,7 @@
         "axios": "^0.21.1",
         "classnames": "^2.3.1",
         "clsx": "^1.1.1",
+        "eslint-plugin-react": "^7.25.1",
         "framer-motion": "^4.1.17",
         "next": "^11.1.2",
         "next-sanity": "^0.1.8",
