@@ -20,7 +20,7 @@ const newslatter = `
     headline,
     description,
     ctaButton
-  }
+  },
 `
 
 const productCardQuery = (queryName: string, dealName: string) => `
@@ -102,7 +102,7 @@ export const shopQuery = groq`{
 
 export const contactQuery = groq`{
   ${siteQuery}
-  ${newslatter},
+  ${newslatter}
   "contact" : *[_type == "contact"][0]{
     ...,
     contactUs{
