@@ -43,7 +43,7 @@ export const DealsAndOffers: React.FC<DealsAndOffersProps> = ({
                             key={index}
                             onClick={() => setActiveDeal(title)}
                             className={clsx(
-                                ' rounded-full lg:py-2 lg:px-5 py-1 px-3 cursor-pointer text-sm font-semibold hover:bg-yellow hover:text-black transition-colors duration-200',
+                                'rounded-full lg:py-2 lg:px-5 py-1 px-3 cursor-pointer   hover:bg-yellow hover:text-black transition-colors duration-200 lg:text-xl  text-base',
                                 title === activeDeal ? 'bg-yellow ' : '',
                             )}
                         >
@@ -54,7 +54,7 @@ export const DealsAndOffers: React.FC<DealsAndOffersProps> = ({
 
                 <div className="overflow-hidden lg:px-5">
                     <Swiper
-                        className="my-16 !overflow-visible"
+                        className="lg:my-16 my-5 !overflow-visible"
                         breakpoints={{
                             320: {
                                 slidesPerView: 1,

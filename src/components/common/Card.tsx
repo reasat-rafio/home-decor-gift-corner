@@ -33,7 +33,7 @@ export const Card: React.FC<CardProps> = ({ product }) => {
             style={{ gridTemplateRows: 'repeat(9, minmax(0, 9fr))' }}
         >
             <Link href={`/product/${product.slug.current}`}>
-                <a className="row-span-7 h-full">
+                <a className="row-span-6 lg:row-span-7 h-full">
                     <SanityImg
                         builder={imageUrlBuilder}
                         image={product.mainImage}
@@ -43,7 +43,7 @@ export const Card: React.FC<CardProps> = ({ product }) => {
                     />
                 </a>
             </Link>
-            <div className="row-span-2 flex flex-col space-y-1">
+            <div className="row-span-3 lg:row-span-2 flex flex-col space-y-1 mt-4">
                 <Link href={`/product/${product.slug.current}`}>
                     <a className="text-center font-medium text-base">{product.title}</a>
                 </Link>
@@ -53,12 +53,12 @@ export const Card: React.FC<CardProps> = ({ product }) => {
                         <span className="text-sm line-through mx-2">
                             {product.price.toLocaleString()} ৳
                         </span>
-                        <span className="text-yellow">
+                        <span className="text-yellow font-semibold ">
                             {product.offer_price.toLocaleString()} ৳
                         </span>
                     </p>
                 ) : (
-                    <span className="text-center text-yellow">
+                    <span className="text-center text-yellow font-semibold">
                         {product.price.toLocaleString()} ৳
                     </span>
                 )}

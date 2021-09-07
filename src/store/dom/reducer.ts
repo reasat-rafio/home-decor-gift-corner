@@ -61,6 +61,9 @@ export const domReducer = createReducer(initialState, (builder) => {
         .addCase(SHOW_SHOP_CATEGORY_SIDE_MENU, (state) => {
             state.showShopCategorySideMenu = true
         })
+        .addCase(HIDE_SHOP_CATEGORY_SIDE_MENU, (state) => {
+            state.showShopCategorySideMenu = false
+        })
         .addCase(LOADING_START, (state) => {
             state.isLoading = true
         })

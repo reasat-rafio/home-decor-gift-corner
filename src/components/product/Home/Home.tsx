@@ -19,8 +19,8 @@ export const Home: React.FC<HomeProps> = (product) => {
 
     return (
         <section className="bg-antiFlashWhite py-section w-full ">
-            <div className="section grid grid-cols-12 gap-0 lg:justify-start items-start  ">
-                <div className="col-span-12 lg:col-span-4 lg:sticky top-10">
+            <div className="section grid grid-cols-12 gap-0 lg:justify-start items-start ">
+                <div className="col-span-12 lg:col-span-4 lg:sticky top-10 z-20">
                     <Gallery>
                         <Swiper
                             className="my-16 grid items-center"
@@ -31,7 +31,7 @@ export const Home: React.FC<HomeProps> = (product) => {
                             spaceBetween={10}
                         >
                             {product?.images?.map((image, index) => (
-                                <SwiperSlide key={index}>
+                                <SwiperSlide key={index} className="">
                                     <Item
                                         original={
                                             imageUrlBuilder
@@ -71,7 +71,7 @@ export const Home: React.FC<HomeProps> = (product) => {
                         </Swiper>
                     </Gallery>
                 </div>
-                <div className="col-span-12 lg:col-span-8 md:ml-16 ml-0 prose-sm lg:prose section_padding  !max-w-none ">
+                <div className="col-span-12 lg:col-span-8 md:ml-16 ml-0 prose-sm lg:prose section_padding  !max-w-none z-0">
                     <h1>{product.title}</h1>
                     {product?.brand && (
                         <div>

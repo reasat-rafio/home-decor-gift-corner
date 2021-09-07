@@ -4,11 +4,11 @@ import { useRouter } from 'next/router'
 import { useOutsideAlerter } from '../../../../libs/hooks'
 import { HIDE_CART_SIDE_MENU, selectDom } from '../../../store/dom'
 import { useAppDispatch, useAppSelector } from '../../../store/hooks'
-import { sideBarVarients } from '../../../../libs/animation'
+import { cartSideBarVarients } from '../../../../libs/animation'
 import { REMOVE_ITEM, selectProduct } from '../../../store/product'
 import { SanityImg } from 'sanity-react-extra'
 import { imageUrlBuilder } from '../../../../utils/sanity'
-import { Cross, EmptyCart } from '../../../../libs/svgs'
+import { EmptyCart } from '../../../../libs/svgs'
 import TextTruncate from 'react-text-truncate'
 
 export const CartSideMenu: React.FC<{}> = ({}) => {
@@ -59,7 +59,7 @@ export const CartSideMenu: React.FC<{}> = ({}) => {
                 {showCartSideMenu && (
                     <motion.div
                         ref={cartSidebarRef}
-                        variants={sideBarVarients}
+                        variants={cartSideBarVarients}
                         initial="initial"
                         animate="animate"
                         exit="exit"

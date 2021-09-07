@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-
 import { useRef, useState } from 'react'
 import { useOutsideAlerter } from '../../../../libs/hooks'
 import { useAppDispatch, useAppSelector } from '../../../store/hooks'
@@ -41,12 +40,12 @@ export const NavSideBars: React.FC<{
                         initial="initial"
                         animate="animate"
                         exit="exit"
-                        className={`fixed h-full md:w-96 w-full  right-0 top-0 bg-white p-8 z-50 overflow-auto `}
+                        className={`fixed h-full md:w-96 w-full  right-0 top-0  bg-brown  p-8 z-50 overflow-auto `}
                     >
                         <motion.span onClick={closeSideMenubarAction} className="cursor-pointer">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                className="h-7 w-7 hover:scale-110 transition-all duration-150 hover:text-yellow"
+                                className="h-7 w-7 hover:scale-110 transition-all duration-150 text-yellow"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
@@ -67,7 +66,7 @@ export const NavSideBars: React.FC<{
                                     className="lg:text-5xl text-4xl my-3 hover:text-yellow transition-colors duration-150"
                                 >
                                     <Link href={href}>
-                                        <a className="">{title}</a>
+                                        <a className="text-white">{title}</a>
                                     </Link>
                                 </li>
                             ))}
@@ -80,7 +79,7 @@ export const NavSideBars: React.FC<{
                                 <p className="font-semibold text-2xl font-sans text-yellow">
                                     {assistance.title}
                                 </p>
-                                <div className="flex items-center space-x-2  text-lg">
+                                <div className="flex items-center space-x-2 text-white  text-lg">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         className="h-4 w-4"
@@ -95,9 +94,9 @@ export const NavSideBars: React.FC<{
                                             d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                                         />
                                     </svg>
-                                    <PortableText blocks={assistance.email} />
+                                    <PortableText className="" blocks={assistance.email} />
                                 </div>
-                                <div className="flex items-center space-x-2">
+                                <div className="flex items-center space-x-2 text-white">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         className="h-4 w-4"
@@ -117,8 +116,8 @@ export const NavSideBars: React.FC<{
                             </div>
                             {/* Delivery */}
                             <div className="flex my-4">
-                                <div className="text-lg">
-                                    <p className="font-semibold text-2xl font-sans text-yellow">
+                                <div className="text-lg text-white">
+                                    <p className="font-semibold text-2xl font-sans text-yellow !m-0 ">
                                         {delivery.title}
                                     </p>
                                     <PortableText blocks={delivery.info} />
@@ -158,7 +157,7 @@ export const NavSideBars: React.FC<{
                                     >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
-                                            className="h-6 w-6"
+                                            className="h-6 w-6 text-white"
                                             fill="none"
                                             viewBox="0 0 24 24"
                                             stroke="currentColor"
@@ -170,7 +169,7 @@ export const NavSideBars: React.FC<{
                                                 d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
                                             />
                                         </svg>
-                                        <button className="">Login / Register</button>
+                                        <button className="text-white">Login / Register</button>
                                     </a>
                                 </Link>
                             )}

@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { selectDom } from '../../store/dom'
-import { useAppDispatch, useAppSelector } from '../../store/hooks'
+import { useAppSelector } from '../../store/hooks'
 import { selectProduct } from '../../store/product'
 import { CheckoutItem } from './CheckoutItem'
 
 interface CheckoutCardProps {}
 
 export const CheckoutCard: React.FC<CheckoutCardProps> = ({}) => {
-    const dispatch = useAppDispatch()
-
     const { inCartProducts } = useAppSelector(selectProduct)
 
     // items subtotal
@@ -35,12 +32,12 @@ export const CheckoutCard: React.FC<CheckoutCardProps> = ({}) => {
         {
             id: 2,
             name: 'Shipping',
-            price: 60,
+            price: inCartProducts.length ? 60 : 0,
         },
         {
             id: 3,
             name: 'Total',
-            price: subTotal + 60,
+            price: inCartProducts.length ? subTotal + 60 : 0,
         },
     ]
 

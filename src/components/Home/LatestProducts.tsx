@@ -17,7 +17,7 @@ export const LatestProducts: React.FC<LatestProductsProps> = ({ latestProduct })
     const navigationNextRef = useRef<HTMLSpanElement>(null)
 
     return (
-        <section className="bg-antiFlashWhite py-section w-full">
+        <section className="bg-antiFlashWhite pt-[80px] lg:pb-[80px]  pb-[40px]  w-full">
             <Container>
                 <h2 className="section-title text-center  hover:text-yellow transition-colors duration-150 cursor-pointer">
                     LATEST PRODUCTS
@@ -34,7 +34,7 @@ export const LatestProducts: React.FC<LatestProductsProps> = ({ latestProduct })
                     </div>
                     <div className="overflow-hidden lg:px-5">
                         <Swiper
-                            className="my-16 !overflow-visible"
+                            className="my-5 lg:my-16 !overflow-visible"
                             breakpoints={{
                                 320: {
                                     slidesPerView: 1,
