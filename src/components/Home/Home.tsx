@@ -14,9 +14,9 @@ export const Home: React.FC<HomeProps> = ({ title, description, backgroundImage,
             />
             <div className="h-screen absolute px-8 top-0 flex flex-col justify-center items-center lg:items-start w-full ">
                 <div className=" flex flex-col justify-center items-center lg:items-start ">
-                    <div className="title  text-center lg:text-left">
+                    <h1 className="title  text-center lg:text-left">
                         <PortableText blocks={title} />
-                    </div>
+                    </h1>
                     <h5 className="text-[#777777] italic lg:font-[36px] font-[25px] text-center lg:text-left">
                         {description}
                     </h5>

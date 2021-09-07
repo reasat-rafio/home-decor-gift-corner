@@ -33,6 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <UserProvider>
             <main className="font-jost bg-antiFlashWhite">
                 <Head>
+                    <link rel="icon" type="image/png" href="/favicon.png" />
                     <link
                         rel="stylesheet"
                         href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"
