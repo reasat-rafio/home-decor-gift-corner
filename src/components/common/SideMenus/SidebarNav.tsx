@@ -126,7 +126,7 @@ export const NavSideBars: React.FC<{
                         </div>
 
                         {/* Auth */}
-                        <div className="cursor-pointer text-2xl">
+                        <div className="cursor-pointer text-2xl ">
                             {!isLoading && user && (
                                 <Link href="/api/auth/logout">
                                     <a className="flex items-center space-x-2">
@@ -144,7 +144,7 @@ export const NavSideBars: React.FC<{
                                                 d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
                                             />
                                         </svg>
-                                        <button>Logout</button>
+                                        <button className="text-white">Logout</button>
                                     </a>
                                 </Link>
                             )}
