@@ -63,6 +63,25 @@ module.exports = {
                     '100%': { left: '125%' },
                 },
             },
+            gridRow: {
+                'span-7': 'span 7 / span 7',
+            },
+            gridRowStart: {
+                8: '8',
+                9: '9',
+                10: '10',
+                11: '11',
+                12: '12',
+                13: '13',
+            },
+            gridRowEnd: {
+                8: '8',
+                9: '9',
+                10: '10',
+                11: '11',
+                12: '12',
+                13: '13',
+            },
             backgroundColor: {
                 yellow: '#FFBA01',
                 gray: '#E5E5E5',

@@ -28,9 +28,12 @@ export const Card: React.FC<CardProps> = ({ product }) => {
     }
 
     return (
-        <div className="bg-white rounded-xl p-3 !h-[450px] !overflow-visible grid grid-rows-6 grid-flow-col justify-center items-center">
+        <div
+            className="bg-white rounded-xl p-3 !h-[500px] !overflow-visible grid grid-flow-col grid-rows-2 justify-center items-center"
+            style={{ gridTemplateRows: 'repeat(9, minmax(0, 9fr))' }}
+        >
             <Link href={`/product/${product.slug.current}`}>
-                <a className="row-span-4 h-full">
+                <a className="row-span-7 h-full">
                     <SanityImg
                         builder={imageUrlBuilder}
                         image={product.mainImage}
