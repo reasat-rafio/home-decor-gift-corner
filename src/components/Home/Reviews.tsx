@@ -14,7 +14,7 @@ export const Reviews: React.FC<ReviewsProps> = ({ reviews, headline }) => {
     const windowWidth = useWindowSize()?.width ?? 0
 
     return (
-        <section className=" bg-antiFlashWhite w-full">
+        <section className="bg-antiFlashWhite w-full">
             <Container>
                 <div className="section-title flex justify-center items-center ">
                     <PortableText blocks={headline} />
@@ -40,6 +40,7 @@ export const Reviews: React.FC<ReviewsProps> = ({ reviews, headline }) => {
                                     width={windowWidth >= 1080 ? 110 : 50}
                                     height={windowWidth >= 1080 ? 110 : 50}
                                     className="relative z-10 rounded-full mx-auto"
+                                    alt={`client ${name}`}
                                 />
                                 <p className="text-center">{name}</p>
                             </div>

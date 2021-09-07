@@ -52,6 +52,7 @@ export const Policy: React.FC<PolicyProps> = ({ title }) => {
                                 builder={imageUrlBuilder}
                                 image={data.icon}
                                 height={50}
+                                alt={data.title}
                             />
                             <h6 className="font-bold font-[36px] text-center mt-1">{data.title}</h6>
                             <p className="text-center">{data.description}</p>

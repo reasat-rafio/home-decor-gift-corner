@@ -60,6 +60,7 @@ function IndexPage(props: SanityProps) {
                 builder={imageUrlBuilder}
                 image={poster}
                 height={550}
+                alt="Banner"
             />
             <LatestProducts latestProduct={latestProduct} />
             {renderObjectArray(screens, {
