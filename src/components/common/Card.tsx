@@ -39,7 +39,7 @@ export const Card: React.FC<CardProps> = ({ product }) => {
                         image={product.mainImage}
                         width={400}
                         alt={product.title}
-                        className="rounded-2xl hover:scale-110 transition-transform duration-150 object-fill h-full hover:drop-shadow-lg cursor-pointer"
+                        className="rounded-2xl hover:scale-110 transition-transform duration-150 object-cover h-full hover:drop-shadow-lg cursor-pointer"
                     />
                 </a>
             </Link>
