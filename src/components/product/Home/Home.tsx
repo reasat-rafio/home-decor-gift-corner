@@ -47,6 +47,7 @@ export const Home: React.FC<HomeProps> = (product) => {
                             closeEl: false,
                             tapToToggleControls: false,
                             clickToCloseNonZoomable: false,
+                            // barsSize: { top: 150, bottom: 'auto' },
                         }}
                         onOpen={(api) => {
                             setFn(api)
@@ -60,14 +61,12 @@ export const Home: React.FC<HomeProps> = (product) => {
                             spaceBetween={10}
                         >
                             {product?.images?.map((image, index) => (
-                                <SwiperSlide key={index} className="asd">
+                                <SwiperSlide key={index} className="h-full w-full">
                                     <Item
-                                        id="asd"
                                         original={
                                             imageUrlBuilder
                                                 .image(image)
                                                 .width(1024)
-                                                .height(768)
                                                 .auto('format')
                                                 .url() as string
                                         }
@@ -80,7 +79,7 @@ export const Home: React.FC<HomeProps> = (product) => {
                                                 .url() as string
                                         }
                                         width="1024"
-                                        height="768"
+                                        height="780"
                                     >
                                         {({ ref, open }) => {
                                             return (

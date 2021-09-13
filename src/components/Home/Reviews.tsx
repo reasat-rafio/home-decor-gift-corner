@@ -31,9 +31,9 @@ export const Reviews: React.FC<ReviewsProps> = ({ reviews, headline }) => {
                     {reviews?.map(({ description, image, name }, i) => (
                         <SwiperSlide
                             key={i}
-                            className="grid grid-cols-12 p-4 bg-white justify-center items-center rounded-3xl lg:gap-5 "
+                            className="grid grid-cols-12 p-4 bg-white justify-center items-center rounded-3xl lg:gap-5 my-auto"
                         >
-                            <div className=" lg:col-span-3 col-span-12 lg:border-r">
+                            <div className=" lg:col-span-3 col-span-12 lg:border-r first:">
                                 <SanityImg
                                     builder={imageUrlBuilder}
                                     image={image}
