@@ -24,7 +24,7 @@ export const getStaticPaths = async () => {
         paths: slugs
             .filter((s: any) => s)
             .map((s: any) => ({ params: { category: s.slug.current } })),
-        fallback: false,
+        fallback: true,
     }
 }
 

@@ -1,38 +1,68 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { HomeProps } from '../../../../libs/types/productTypes'
 import { imageUrlBuilder, PortableText } from '../../../../utils/sanity'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Autoplay, EffectFade, Navigation } from 'swiper'
 import { SanityImg } from 'sanity-react-extra'
-import { Gallery, Item } from 'react-photoswipe-gallery'
+import { Gallery, Item, useGallery, CustomGallery } from 'react-photoswipe-gallery'
 import 'photoswipe/dist/photoswipe.css'
 import 'photoswipe/dist/default-skin/default-skin.css'
 import 'swiper/swiper-bundle.css'
 import { useState } from 'react'
 import { Action } from './Action'
 import { useWindowSize } from '../../../../libs/hooks'
+import clsx from 'clsx'
+import { Cross } from '../../../../libs/svgs'
+
 SwiperCore.use([Autoplay, EffectFade, Navigation])
 
 export const Home: React.FC<HomeProps> = (product) => {
     const [quantity, setQuantity] = useState(1)
     const windowWidth = useWindowSize()?.width ?? 0
 
+    const imgContaineRef = useRef<HTMLDivElement>(null)
+
+    const [fullscreenView, setFullscreenView] = useState(false)
+    const [fn, setFn] = useState<any>()
+
+    const { height: windowHeight } = useWindowSize() ?? {
+        width: 0,
+        height: 0,
+    }
+
     return (
         <section className="bg-antiFlashWhite py-section w-full ">
-            <div className="section grid grid-cols-12 gap-0 lg:justify-start items-start ">
-                <div className="col-span-12 lg:col-span-4 lg:sticky top-10 z-20">
-                    <Gallery>
+            <div
+                className="section grid grid-cols-12 gap-0 lg:justify-start items-start  "
+                ref={imgContaineRef}
+            >
+                <div className={clsx('col-span-12 lg:col-span-4 lg:sticky top-10 z-20')}>
+                    <Gallery
+                        options={{
+                            closeOnScroll: false,
+                            closeOnVerticalDrag: false,
+                            pinchToClose: false,
+                            escKey: false,
+                            closeElClasses: [],
+                            closeEl: false,
+                            tapToToggleControls: false,
+                            clickToCloseNonZoomable: false,
+                        }}
+                        onOpen={(api) => {
+                            setFn(api)
+                        }}
+                    >
                         <Swiper
                             className="my-16 grid items-center"
                             centerInsufficientSlides={true}
-                            autoplay={{ disableOnInteraction: false }}
                             navigation
                             slidesPerView={1}
                             spaceBetween={10}
                         >
                             {product?.images?.map((image, index) => (
-                                <SwiperSlide key={index} className="">
+                                <SwiperSlide key={index} className="asd">
                                     <Item
+                                        id="asd"
                                         original={
                                             imageUrlBuilder
                                                 .image(image)
@@ -52,19 +82,24 @@ export const Home: React.FC<HomeProps> = (product) => {
                                         width="1024"
                                         height="768"
                                     >
-                                        {({ ref, open }) => (
-                                            <SanityImg
-                                                ref={
-                                                    ref as React.MutableRefObject<HTMLImageElement>
-                                                }
-                                                onClick={open}
-                                                builder={imageUrlBuilder}
-                                                image={image}
-                                                height={windowWidth >= 1024 ? 600 : 400}
-                                                alt={product.title}
-                                                className="rounded-2xl transition-transform duration-150 object-cover h-full drop-shadow-xl cursor-pointer mx-auto"
-                                            />
-                                        )}
+                                        {({ ref, open }) => {
+                                            return (
+                                                <SanityImg
+                                                    ref={
+                                                        ref as React.MutableRefObject<HTMLImageElement>
+                                                    }
+                                                    onClick={() => {
+                                                        setFullscreenView(true)
+                                                        open()
+                                                    }}
+                                                    builder={imageUrlBuilder}
+                                                    image={image}
+                                                    height={windowWidth >= 1024 ? 600 : 400}
+                                                    alt={product.title}
+                                                    className="rounded-2xl transition-transform duration-150 object-cover h-full drop-shadow-xl cursor-pointer mx-auto"
+                                                />
+                                            )
+                                        }}
                                     </Item>
                                 </SwiperSlide>
                             ))}
@@ -113,6 +148,18 @@ export const Home: React.FC<HomeProps> = (product) => {
                     <Action quantity={quantity} setQuantity={setQuantity} product={product} />
                 </div>
             </div>
+
+            {fullscreenView && (
+                <div
+                    className="fixed top-[15%] right-12 scale-150 z-40 cursor-pointer  text-yellow"
+                    onClick={() => {
+                        setFullscreenView(false)
+                        fn.close()
+                    }}
+                >
+                    <Cross />
+                </div>
+            )}
         </section>
     )
 }

@@ -9,6 +9,8 @@ import { motion } from 'framer-motion'
 import { useIntersection } from '../../../libs/hooks'
 import { ProductsProps } from '../../../libs/types/shopTypes'
 import Container from '../../ui/container'
+import Button from '../../ui/Button'
+import { useRouter } from 'next/router'
 
 SwiperCore.use([Autoplay, EffectFade])
 
@@ -22,10 +24,9 @@ export const DealsAndOffers: React.FC<DealsAndOffersProps> = ({
     const [_products, setProducts] = useState<ProductsProps[] | null>(null)
 
     const allProducts: any[] = [...bestSeller, ...offer, ...special]
-    console.log('====================================')
-    console.log(activeDeal)
-    console.log(allProducts)
-    console.log('====================================')
+
+    const router = useRouter()
+
     useEffect(() => {
         const activeProducts = allProducts.filter(
             (product) => product.deals[0].title === activeDeal,
@@ -111,6 +112,14 @@ export const DealsAndOffers: React.FC<DealsAndOffersProps> = ({
                             </SwiperSlide>
                         ))}
                     </Swiper>
+                    <div className="flex">
+                        <Button
+                            onClick={() => router.push('/shop')}
+                            className="!bg-[#212122] !text-yellow mx-auto !text-lg !px-16 rounded-full"
+                        >
+                            View All Products
+                        </Button>
+                    </div>
                 </div>
             </Container>
         </section>

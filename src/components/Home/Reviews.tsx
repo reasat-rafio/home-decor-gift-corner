@@ -44,7 +44,7 @@ export const Reviews: React.FC<ReviewsProps> = ({ reviews, headline }) => {
                                 />
                                 <p className="text-center">{name}</p>
                             </div>
-                            <p className="lg:col-span-9 col-span-12 italic lg:text-2xl text-base font-light">
+                            <p className="lg:col-span-9 col-span-12 italic lg:text-2xl text-base font-light text-center lg:text-left">
                                 {description}
                             </p>
                         </SwiperSlide>

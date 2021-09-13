@@ -34,10 +34,10 @@ export const Navbar: React.FC<NavbarProps> = ({ logo, menu }) => {
     }
 
     return (
-        <div className={clsx('fixed w-full top-0 z-50  ')}>
+        <div className="fixed w-full top-0 z-40">
             <div
                 className={clsx(
-                    'w-full py-2 z-75 transition-all duration-300 ease-out z-50 bg-brown lg:px-10 px-4',
+                    'w-full py-2  transition-all duration-300 ease-out z-50 bg-brown lg:px-10 px-4',
                     scroll ? 'shadow-lg opacity-100' : 'bg-opacity-100',
                 )}
             >
