@@ -60,13 +60,13 @@ export const homeQuery = groq`{
         },
     },
 
-    ${productCardQuery('offer', 'Offer')}
+    ${productCardQuery('offer', 'Limited')}
     ${productCardQuery('bestSeller', 'Best Seller')}
     ${productCardQuery('special', 'Special')}
     "deals": *[_type == "deal"][]{
       title
     },
-    "latestProduct": *[_type == "product"]|order(_createdAt desc)[0...6]{
+    "latestProduct": *[_type == "product"]|order(_createdAt desc)[0...10]{
       "mainImage": ${withDimensions('mainImage')},
       _id,
       slug,

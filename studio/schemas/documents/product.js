@@ -10,11 +10,13 @@ export default {
             name: 'title',
             title: 'Title',
             type: 'string',
+            require: true,
         },
         {
             title: 'Main image',
             name: 'mainImage',
             type: 'image',
+            require: true,
             options: {
                 hotspot: true,
             },
@@ -52,6 +54,7 @@ export default {
             title: 'Availbility',
             name: 'availbility',
             type: 'string',
+            require: true,
             options: {
                 list: [
                     { title: 'In Stock', value: 'In Stock' },
@@ -72,6 +75,7 @@ export default {
             title: 'Regular Price',
             name: 'price',
             type: 'number',
+            require: true,
         },
         {
             title: 'Offer Price',
@@ -84,6 +88,7 @@ export default {
             title: 'Tags',
             name: 'tags',
             type: 'array',
+            require: true,
             of: [
                 {
                     title: 'Choose Associated Tag',
@@ -98,6 +103,7 @@ export default {
             name: 'categories',
             title: 'Categories',
             type: 'array',
+            require: true,
             of: [
                 {
                     type: 'reference',
@@ -120,6 +126,7 @@ export default {
             name: 'slug',
             title: 'Slug',
             type: 'slug',
+            require: true,
             options: {
                 source: 'title',
                 maxLength: 96,

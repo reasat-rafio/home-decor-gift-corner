@@ -22,7 +22,10 @@ export const DealsAndOffers: React.FC<DealsAndOffersProps> = ({
     const [_products, setProducts] = useState<ProductsProps[] | null>(null)
 
     const allProducts: any[] = [...bestSeller, ...offer, ...special]
-
+    console.log('====================================')
+    console.log(activeDeal)
+    console.log(allProducts)
+    console.log('====================================')
     useEffect(() => {
         const activeProducts = allProducts.filter(
             (product) => product.deals[0].title === activeDeal,
