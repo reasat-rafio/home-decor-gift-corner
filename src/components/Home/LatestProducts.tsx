@@ -13,6 +13,9 @@ SwiperCore.use([Autoplay, EffectFade, Navigation])
 
 export const LatestProducts: React.FC<LatestProductsProps> = ({ latestProduct }) => {
     // custome navigation button ref
+
+    console.log(latestProduct)
+
     const navigationPrevRef = useRef<HTMLSpanElement>(null)
     const navigationNextRef = useRef<HTMLSpanElement>(null)
 

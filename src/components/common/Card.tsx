@@ -44,7 +44,7 @@ export const Card: React.FC<CardProps> = ({ product }) => {
                 </a>
             </Link>
             <div className="row-span-3 lg:row-span-2 flex flex-col space-y-1 mt-4">
-                <Link href={`/product/${product.slug.current}`}>
+                <Link href={`/product/${product?.slug?.current}`}>
                     <a className="text-center font-medium text-base">{product.title}</a>
                 </Link>
 
